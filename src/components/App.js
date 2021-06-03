@@ -1,4 +1,7 @@
 import '../css/App.css';
+import Content from "../components/Content"
+import Footer from './Footer';
+
 
 function App() {
   return (
@@ -11,10 +14,10 @@ function App() {
       </nav>
       </div>
       <div className="content">
-
+        <Content/>
       </div>
       <div className="footer">
-
+        <Footer/>
       </div>
     </div>
   );
