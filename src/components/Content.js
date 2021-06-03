@@ -1,13 +1,22 @@
-import React from 'react'
+import React,{useState, useEffect} from "react";
+import axios from "axios";
 
 const Content = () => {
-    return (
-        <div>
-            <h1>
-                we are in the Content page! 
-            </h1>
-        </div>
-    )
-}
+  const [weather, setWeather] = useState([]);
+  console.log(setWeather)
 
-export default Content
+  useEffect(() => {
+    axios.get("")
+  }, [weather])
+
+  return (
+    <div>
+      <h1>
+        weather goes here:
+        <p>{}</p>
+      </h1>
+    </div>
+  );
+};
+
+export default Content;
