@@ -18,7 +18,7 @@ const Content = () => {
 
   return (
     <div>
-      <h1>weather goes here:</h1>
+      <h1>weather for {weather && weather.name}:</h1>
       {weather && <ContentList weather={weather} />}
     </div>
   );
