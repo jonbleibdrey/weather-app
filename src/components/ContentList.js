@@ -12,7 +12,7 @@ const ContentList = ({ weather }) => {
           <th>Feels like:</th>
           <th>Min for the day:</th>
           <th>Max for the day:</th>
-          <th>Speed:</th>
+          <th>Wind Speed:</th>
           <th>Weather:</th>
         </tr>
         <tr>

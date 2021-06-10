@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <div>
             <h3>
-            we are on the footer!
+            Footer
             </h3>
             
         </div>
