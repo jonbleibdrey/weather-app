@@ -6,6 +6,7 @@ const Content = () => {
   const [weather, setWeather] = useState(null);
   const [location, setLocation] = useState();
   const [statess, setStatess] = useState();
+  const [town, setTown] = useState();
   const [zipCode, setZipCode] = useState();
   require('dotenv').config()
 
@@ -42,6 +43,7 @@ const Content = () => {
       .then((res) => {
         setStatess(res.data.data[0].region);
         setZipCode(res.data.data[0].postal_code);
+        setTown(res.data.data[0].locality);
         setLocation("");
         // sessionStorage.setItem("userZipCode", res.data.data[0].postal_code);
         // //console.log("session storage zipcode" ,sessionStorage.getItem("userZipCode"));
@@ -81,7 +83,7 @@ const Content = () => {
   return (
     <div>
       {statess}
-      <h1>Weather for {weather && weather.name} 
+      <h1>Weather for {town}, {weather && weather.name} 
       <br/>
       Zip Code: {zipCode}</h1>
       {weather && <ContentList weather={weather} />}
