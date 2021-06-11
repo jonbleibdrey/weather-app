@@ -79,6 +79,12 @@ const Content = () => {
               setLocation("Geolocation failed due to unknown error.");
     }
   }
+
+  function tempConverter(temp){
+    const celsius = temp - 273;
+    const fahrenheit = Math.floor(celsius * (9/5) + 32);
+    return fahrenheit
+  }
   
   return (
     <div>
@@ -86,7 +92,7 @@ const Content = () => {
       <h1>Weather for {town}, {weather && weather.name} 
       <br/>
       Zip Code: {zipCode}</h1>
-      {weather && <ContentList weather={weather} />}
+      {weather && <ContentList weather={weather} tempConverter={tempConverter} />}
     </div>
   );
 };
