@@ -80,10 +80,14 @@ const Content = () => {
     }
   }
 
-  function tempConverter(temp){
+  function farConverter(temp){
     const celsius = temp - 273;
     const fahrenheit = Math.floor(celsius * (9/5) + 32);
     return fahrenheit
+  }
+  function celConverter(temp){
+    const celsius = temp - 273;
+    return Math.floor(celsius)
   }
 
   function windConverter(speed){
@@ -97,7 +101,7 @@ const Content = () => {
       <h1>Weather for {town}, {weather && weather.name} 
       <br/>
       Zip Code: {zipCode}</h1>
-      {weather && <ContentList weather={weather} tempConverter={tempConverter} windConverter={windConverter} />}
+      {weather && <ContentList weather={weather} farConverter={farConverter} windConverter={windConverter} celConverter={celConverter} />}
     </div>
   );
 };
