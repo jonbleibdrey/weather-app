@@ -85,6 +85,11 @@ const Content = () => {
     const fahrenheit = Math.floor(celsius * (9/5) + 32);
     return fahrenheit
   }
+
+  function windConverter(speed){
+    const millsec = speed * 2.23694
+    return Math.floor(millsec)
+  }
   
   return (
     <div>
@@ -92,7 +97,7 @@ const Content = () => {
       <h1>Weather for {town}, {weather && weather.name} 
       <br/>
       Zip Code: {zipCode}</h1>
-      {weather && <ContentList weather={weather} tempConverter={tempConverter} />}
+      {weather && <ContentList weather={weather} tempConverter={tempConverter} windConverter={windConverter} />}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/ContentList.css"
 
-const ContentList = ({ weather, tempConverter }) => {
+const ContentList = ({ weather, tempConverter, windConverter }) => {
   return (
     <div className="contentList">
       <table className="contentList-table" style={{width:"100%"}}>
@@ -18,11 +18,11 @@ const ContentList = ({ weather, tempConverter }) => {
         <tr>
           <td>{weather.name}</td>
           <td>{weather.sys.country}</td>
-          <td>{tempConverter(weather.main.temp)}</td>
-          <td>{tempConverter(weather.main.feels_like)}</td>
-          <td>{tempConverter(weather.main.temp_min)}</td>
-          <td>{tempConverter(weather.main.temp_max)}</td>
-          <td>{weather.wind.speed}</td>
+          <td>{tempConverter(weather.main.temp)}°</td>
+          <td>{tempConverter(weather.main.feels_like)}°</td>
+          <td>{tempConverter(weather.main.temp_min)}°</td>
+          <td>{tempConverter(weather.main.temp_max)}°</td>
+          <td>{windConverter(weather.wind.speed)} MPH</td>
           <td>{weather.weather[0].description}</td>
         </tr>
       </table>
