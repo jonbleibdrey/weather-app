@@ -8,18 +8,19 @@ const Content = () => {
   const [statess, setStatess] = useState();
   const [town, setTown] = useState();
   const [zipCode, setZipCode] = useState();
-  require('dotenv').config()
-  console.log("location data: ",location)
+  const [isLoading, setIsLoading] = useState(true)
+  require("dotenv").config();
+  console.log("location data: ", location);
 
   useEffect(() => {
-    showPosition()
+    showPosition();
   }, []);
 
   useEffect(() => {
-    {statess && getWeather()}
+    {
+      statess && getWeather();
+    }
   }, [statess]);
-
-  
 
   function showPosition() {
     if (navigator.geolocation) {
@@ -30,16 +31,14 @@ const Content = () => {
     }
   }
 
-  
-  
   function successCallback(position) {
     const long = position.coords.longitude;
     const lat = position.coords.latitude;
     const key = process.env.REACT_APP_LOC_API_KEY;
-    
+
     axios
-    .get(
-      `http://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
+      .get(
+        `http://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
       )
       .then((res) => {
         setStatess(res.data.data[0].region);
@@ -47,61 +46,72 @@ const Content = () => {
         setTown(res.data.data[0].locality);
         setLocation("");
       })
-      
+
       .catch((error) => alert("geolocation is currently down"));
+  }
+
+  function getWeather() {
+    const apiKey = process.env.REACT_APP_API_KEY;
+    axios
+      .get(
+        `http://api.openweathermap.org/data/2.5/weather?q=${statess}&appid=${apiKey}`
+      )
+      .then((res) => setWeather(res.data),
+      setIsLoading(false))
      
-    }
+      .catch((error) => console.log("we in error world", error));
+  }
 
-    function getWeather(){
-      const apiKey = process.env.REACT_APP_API_KEY;
-     axios
-        .get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${statess}&appid=${apiKey}`
-        )
-        .then((res) => setWeather(res.data))
-        .catch((error) => console.log("we in error world", error));
-    }
-    
-    function errorCallback(error) {
-      if (error.code === 1) {
-        setLocation(
-          "You've decided not to share your position, but it's OK. We won't ask you again."
-          );
-        } else if (error.code === 2) {
-          setLocation(
-            "The network is down or the positioning service can't be reached."
-            );
-          } else if (error.code === 3) {
-            setLocation(
-              "The attempt timed out before it could get the location data."
-              );
-            } else {
-              setLocation("Geolocation failed due to unknown error.");
+  function errorCallback(error) {
+    if (error.code === 1) {
+      setLocation(
+        "You've decided not to share your position, but it's OK. We won't ask you again."
+      );
+    } else if (error.code === 2) {
+      setLocation(
+        "The network is down or the positioning service can't be reached."
+      );
+    } else if (error.code === 3) {
+      setLocation(
+        "The attempt timed out before it could get the location data."
+      );
+    } else {
+      setLocation("Geolocation failed due to unknown error.");
     }
   }
 
-  function farConverter(temp){
+  function farConverter(temp) {
     const celsius = temp - 273;
-    const fahrenheit = Math.floor(celsius * (9/5) + 32);
-    return fahrenheit
+    const fahrenheit = Math.floor(celsius * (9 / 5) + 32);
+    return fahrenheit;
   }
-  function celConverter(temp){
+  function celConverter(temp) {
     const celsius = temp - 273;
-    return Math.floor(celsius)
+    return Math.floor(celsius);
   }
 
-  function windConverter(speed){
-    const millsec = speed * 2.23694
-    return Math.floor(millsec)
+  function windConverter(speed) {
+    const millsec = speed * 2.23694;
+    return Math.floor(millsec);
   }
-  
+
   return (
     <div>
-      {statess}
-      <h1>Weather for {town}, {weather && weather.name} 
-      <br/>
-      Zip Code: {zipCode}</h1>
-      {weather && <ContentList weather={weather} farConverter={farConverter} windConverter={windConverter} celConverter={celConverter} />}
+      {/* {statess} */}
+      <h1>
+        Weather for {town}, {weather && weather.name}
+        <br />
+        Zip Code: {zipCode}
+      </h1>
+      {isLoading && <div>Loading...</div>}
+      {weather && (
+        <ContentList
+          weather={weather}
+          farConverter={farConverter}
+          windConverter={windConverter}
+          celConverter={celConverter}
+        />
+      )}
     </div>
   );
 };
