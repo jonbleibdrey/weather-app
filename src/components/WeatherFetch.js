@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ContentList from "./ContentList";
+import CurrentWeatherList from "./CurrentWeatherList";
+import HourlyWeatherList from "./HourlyWeatherList";
 
-const Content = () => {
+const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
   const [statess, setStatess] = useState();
+  const [country, setCountry] = useState();
   const [town, setTown] = useState();
   const [zipCode, setZipCode] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [lat, setLat] = useState(null);
+  const [long, setLong] = useState(null);
   require("dotenv").config();
 
   useEffect(() => {
@@ -19,24 +23,26 @@ const Content = () => {
   }, []);
 
   useEffect(() => {
-    statess && getWeather();
+    lat && long && getWeather();
 
     function getWeather() {
       const apiKey = process.env.REACT_APP_API_KEY;
       axios
         .get(
-          `http://api.openweathermap.org/data/2.5/weather?q=${statess}&appid=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
         )
         .then((res) => setWeather(res.data), setIsLoading(false))
 
         .catch((error) => console.log("we in error world", error));
     }
-  }, [statess]);
+  }, [lat, long]);
 
   function successCallback(position) {
     const long = position.coords.longitude;
     const lat = position.coords.latitude;
     const key = process.env.REACT_APP_LOC_API_KEY;
+    setLat(lat);
+    setLong(long);
 
     axios
       .get(
@@ -46,6 +52,7 @@ const Content = () => {
         setStatess(res.data.data[0].region);
         setZipCode(res.data.data[0].postal_code);
         setTown(res.data.data[0].locality);
+        setCountry(res.data.data[0].country);
       })
 
       .catch((error) => alert(`Error message: ${error.message} `));
@@ -70,6 +77,21 @@ const Content = () => {
     return Math.floor(millsec);
   }
 
+  function unixToTime(time) {
+    const timeObj = new Date(time * 1000);
+    const utcString = timeObj.getUTCHours();
+    const finalTime = utcString % 12;
+    const ampm = (timeObj.getHours() >= 12) ? "PM" : "AM";
+
+    if (finalTime === 0) {
+      return 12 +" "+ampm;
+    } else {
+      return finalTime +" "+ ampm;
+    }
+
+    return finalTime;
+  }
+
   return (
     <div>
       <h1>
@@ -77,17 +99,25 @@ const Content = () => {
         <br />
         Zip Code: {zipCode}
       </h1>
+      Current Weather:
       {isLoading && <div>Loading...</div>}
       {weather && (
-        <ContentList
+        <CurrentWeatherList
+          statess={statess}
+          country={country}
           weather={weather}
           farConverter={farConverter}
           windConverter={windConverter}
           celConverter={celConverter}
         />
       )}
+      Hourly Weather:
+      {console.log(weather)}
+      {weather && (
+        <HourlyWeatherList weather={weather} unixToTime={unixToTime} />
+      )}
     </div>
   );
 };
 
-export default Content;
+export default WeatherFetch;

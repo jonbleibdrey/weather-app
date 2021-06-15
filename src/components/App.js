@@ -1,4 +1,4 @@
-import Content from "../components/Content"
+import WeatherFetch  from "../components/WeatherFetch"
 import Footer from './Footer';
 import '../css/App.css';
 
@@ -14,7 +14,7 @@ function App() {
       </nav>
       </div>
       <div className="content">
-        <Content/>
+        <WeatherFetch/>
       </div>
       <div className="footer">
         <Footer/>
