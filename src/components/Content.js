@@ -8,7 +8,7 @@ const Content = () => {
   const [statess, setStatess] = useState();
   const [town, setTown] = useState();
   const [zipCode, setZipCode] = useState();
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
   require("dotenv").config();
   console.log("location data: ", location);
 
@@ -56,9 +56,8 @@ const Content = () => {
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${statess}&appid=${apiKey}`
       )
-      .then((res) => setWeather(res.data),
-      setIsLoading(false))
-     
+      .then((res) => setWeather(res.data), setIsLoading(false))
+
       .catch((error) => console.log("we in error world", error));
   }
 
