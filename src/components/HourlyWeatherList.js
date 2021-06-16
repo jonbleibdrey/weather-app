@@ -1,27 +1,27 @@
 import React from 'react'
 
-const HourlyWeatherList = ({weather, unixToTime}) => {
+const HourlyWeatherList = ({weather}) => {
 
 
     return (
         <div>
-           {weather.hourly.map(hour => 
-            <table className="contentList-table" style={{ width: "100%" }}>
-            <tr>
-              <th>hour:</th>
-              <th>Country:</th>
-              <th>Tempature:</th>
-              <th>Feels like:</th>
-              <th>Wind Speed:</th>
-              <th>Weather:</th>
-            </tr>
-            <tr>
-              <td>{unixToTime(hour.dt)}</td>
-              <td>{}</td>
-            </tr>
-            </table>
+           {weather.hourly.slice([0],[10]).map(hour => <div>{hour.temp}</div>)
+            // <table className="contentList-table" style={{ width: "100%" }}>
+            // <tr>
+            //   <th>hour:</th>
+            //   <th>Country:</th>
+            //   <th>Tempature:</th>
+            //   <th>Feels like:</th>
+            //   <th>Wind Speed:</th>
+            //   <th>Weather:</th>
+            // </tr>
+            // <tr>
+            //   <td>{}</td>
+            //   <td>{}</td>
+            // </tr>
+            // </table>
             
-            )}
+            }
         </div>
     )
 }
