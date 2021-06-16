@@ -78,6 +78,12 @@ const WeatherFetch = () => {
     return Math.floor(millsec);
   }
 
+  function dayConverter(time) {
+    const timeObj = new Date(1000 * time);
+    const date = timeObj.toDateString();
+    return date;
+  }
+
   // function unixToTime(time) {
   //   const timeObj = new Date(time * 1000);
   //   const utcString = timeObj.getUTCHours();
@@ -93,6 +99,7 @@ const WeatherFetch = () => {
 
   return (
     <div>
+      {console.log(weather)}
       <h1>
         Weather for {town}, {weather && weather.name}
         <br />
@@ -100,24 +107,33 @@ const WeatherFetch = () => {
       </h1>
       Current Weather:
       {isLoading && <div>Loading...</div>}
+      
       {weather && (
         <CurrentWeatherList
           statess={statess}
           country={country}
           weather={weather}
           farConverter={farConverter}
-          windConverter={windConverter}
           celConverter={celConverter}
+          windConverter={windConverter}
         />
       )}
       Hourly Weather:
-      {console.log(weather)}
       {weather && (
-        <HourlyWeatherList weather={weather}  />
+        <HourlyWeatherList
+          weather={weather}
+          farConverter={farConverter}
+          celConverter={celConverter}
+        />
       )}
-      Weekly Weather
+      Weekly Weather:
       {weather && (
-        <WeekWeatherList weather={weather}  />
+        <WeekWeatherList
+          weather={weather}
+          farConverter={farConverter}
+          celConverter={celConverter}
+          dayConverter={dayConverter}
+        />
       )}
     </div>
   );

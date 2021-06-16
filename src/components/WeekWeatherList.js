@@ -1,17 +1,25 @@
-import React from 'react'
+import React from "react";
 
-const WeekWeatherList = ({weather}) => {
-
-    
-    return (
+const WeekWeatherList = ({
+  weather,
+  farConverter,
+  celConverter,
+  dayConverter,
+}) => {
+  return (
+    <div>
+      {weather.daily.map((day) => (
         <div>
-           { weather.daily.map(day => <div>
-                {day.temp.day}
-            </div>
-           )
-            }
+          <div>Day: {dayConverter(day.dt)}</div>
+          <div>
+            Tempature: {farConverter(day.temp.day)}° , Min tempature:{" "}
+            {farConverter(day.temp.min)}° , Max tempature{" "}
+            {farConverter(day.temp.max)}°
+          </div>
         </div>
-    )
-}
+      ))}
+    </div>
+  );
+};
 
-export default WeekWeatherList
+export default WeekWeatherList;
