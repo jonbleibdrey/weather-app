@@ -103,14 +103,14 @@ const WeatherFetch = () => {
   return (
     <div>
       {console.log(weather)}
+      <br />
+      <SearchBar />
       <h1>
-        Weather for {town}, {weather && weather.name}
+        Weather near {town}, {weather && weather.name}
         <br />
         Zip Code: {zipCode}
       </h1>
-      <SearchBar />
-      <br />
-      Current Weather:
+      <h2>Local Weather:</h2>
       {isLoading && <div>Loading...</div>}
       {weather && (
         <CurrentWeatherList
@@ -123,7 +123,8 @@ const WeatherFetch = () => {
         />
       )}
       <br />
-      Hourly Weather:
+      <h2>Hourly Weather:</h2>
+      {isLoading && <div>Loading...</div>}
       <br />
       {weather && (
         <HourlyWeatherList
@@ -134,7 +135,8 @@ const WeatherFetch = () => {
         />
       )}
       <br />
-      Weekly Weather:
+      <h2>Weekly Weather:</h2>
+      {isLoading && <div>Loading...</div>}
       <br />
       {weather && (
         <WeekWeatherList

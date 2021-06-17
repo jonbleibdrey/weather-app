@@ -11,12 +11,19 @@ const WeekWeatherList = ({
     <div>
       {weather.daily.map((day) => (
         <div key={mixId()}>
-          <div>Day: {dayConverter(day.dt)}</div>
-          <div>
-            Tempature: {farConverter(day.temp.day)}° , Min tempature:{" "}
-            {farConverter(day.temp.min)}° , Max tempature{" "}
-            {farConverter(day.temp.max)}°, weather: {day.weather[0].description}
-          </div>
+          <ul>
+            <li>
+              Day: {dayConverter(day.dt)} <br />
+              Tempature: {farConverter(day.temp.day)}° ,
+              <br />
+              Min tempature: {farConverter(day.temp.min)}° ,
+              <br />
+              Max tempature {farConverter(day.temp.max)}°,
+              <br />
+              weather: {day.weather[0].description}
+            </li>
+          </ul>
+          <div></div>
         </div>
       ))}
     </div>

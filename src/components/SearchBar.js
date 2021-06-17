@@ -18,6 +18,7 @@ const SearchBar = () => {
       .then((res) => setSearchResult(res.data), setErr(false))
 
       .catch((error) => setErr(true));
+    setSearch("");
   }
 
   return (
