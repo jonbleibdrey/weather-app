@@ -1,23 +1,28 @@
-import WeatherFetch  from "../components/WeatherFetch"
-import Footer from './Footer';
-import '../css/App.css';
-
+import WeatherFetch from "../components/WeatherFetch";
+import Footer from "./Footer";
+import "../css/App.css";
 
 function App() {
   return (
     <div className="App">
       <div className="navBar">
-      <nav className="navBar-group">
-        <a className="navBar-link" href="/">Home</a>
-        <a className="navBar-link" href="/">Weather</a>
-        <a className="navBar-link" href="/">About</a>
-      </nav>
+        <nav className="navBar-group">
+          <a className="navBar-link" href="/">
+            Home
+          </a>
+          <a className="navBar-link" href="/">
+            Weather
+          </a>
+          <a className="navBar-link" href="/">
+            About
+          </a>
+        </nav>
       </div>
       <div className="content">
-        <WeatherFetch/>
+        <WeatherFetch />
       </div>
       <div className="footer">
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );

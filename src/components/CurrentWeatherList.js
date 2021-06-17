@@ -11,30 +11,20 @@ const CurrentWeatherList = ({
 }) => {
   return (
     <div className="contentList">
-      <table className="contentList-table" style={{ width: "100%" }}>
-        <tr>
-          <th>State:</th>
-          <th>Country:</th>
-          <th>Tempature:</th>
-          <th>Feels like:</th>
-          <th>Wind Speed:</th>
-          <th>Weather:</th>
-        </tr>
-        <tr>
-          <td>{statess}</td>
-          <td>{country}</td>
-          <td>
-            {farConverter(weather.current.temp)}°/{" "}
-            {celConverter(weather.current.temp)}°
-          </td>
-          <td>
-            {farConverter(weather.current.feels_like)}°/{" "}
-            {celConverter(weather.current.feels_like)}°
-          </td>
-          <td>{windConverter(weather.current.wind_speed)} MPH</td>
-          <td>{weather.current.weather[0].description}</td>
-        </tr>
-      </table>
+      <ul>
+        <li>State: {statess}</li>
+        <li>Country: {country}</li>
+        <li>
+          Tempature: {farConverter(weather.current.temp)}°/{" "}
+          {celConverter(weather.current.temp)}°
+        </li>
+        <li>
+          Feels like: {farConverter(weather.current.feels_like)}°/{" "}
+          {celConverter(weather.current.feels_like)}°
+        </li>
+        <li>Wind Speed: {windConverter(weather.current.wind_speed)}</li>
+        <li>MPH Weather: {weather.current.weather[0].description}</li>
+      </ul>
     </div>
   );
 };

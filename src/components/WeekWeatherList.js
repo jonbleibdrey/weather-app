@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as mixId } from "uuid";
 
 const WeekWeatherList = ({
   weather,
@@ -9,7 +10,7 @@ const WeekWeatherList = ({
   return (
     <div>
       {weather.daily.map((day) => (
-        <div>
+        <div key={mixId()}>
           <div>Day: {dayConverter(day.dt)}</div>
           <div>
             Tempature: {farConverter(day.temp.day)}° , Min tempature:{" "}
