@@ -50,6 +50,7 @@ const WeatherFetch = () => {
         `http://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
       )
       .then((res) => {
+        console.log("response: ",res);
         setStatess(res.data.data[0].region);
         setZipCode(res.data.data[0].postal_code);
         setTown(res.data.data[0].locality);
@@ -105,9 +106,9 @@ const WeatherFetch = () => {
         <br />
         Zip Code: {zipCode}
       </h1>
+      <br/>
       Current Weather:
       {isLoading && <div>Loading...</div>}
-      
       {weather && (
         <CurrentWeatherList
           statess={statess}
@@ -118,7 +119,9 @@ const WeatherFetch = () => {
           windConverter={windConverter}
         />
       )}
+      <br/>
       Hourly Weather:
+      <br/>
       {weather && (
         <HourlyWeatherList
           weather={weather}
@@ -126,7 +129,9 @@ const WeatherFetch = () => {
           celConverter={celConverter}
         />
       )}
+      <br/>
       Weekly Weather:
+      <br/>
       {weather && (
         <WeekWeatherList
           weather={weather}

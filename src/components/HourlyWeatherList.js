@@ -4,6 +4,7 @@ const HourlyWeatherList = ({ weather, farConverter,
   celConverter }) => {
   return (
     <div>
+      <br/>
       {
         weather.hourly.slice([0], [10]).map((hour) => (
           <div>
