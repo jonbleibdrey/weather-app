@@ -1,15 +1,15 @@
 import React from "react";
 
 const HourlyWeatherList = ({ weather, farConverter,
-  celConverter }) => {
+  celConverter, unixToTime }) => {
   return (
     <div>
       <br/>
       {
-        weather.hourly.slice([0], [10]).map((hour) => (
+        weather.hourly.slice([0], [12]).map((hour) => (
           <div>
-            {farConverter(hour.temp)}°/
-            {celConverter(hour.temp)}°
+           {unixToTime(hour.dt)}: {farConverter(hour.temp)}°/ 
+             {celConverter(hour.temp)}°
           
           </div>
         ))

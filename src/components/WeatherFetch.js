@@ -57,7 +57,7 @@ const WeatherFetch = () => {
         setCountry(res.data.data[0].country);
       })
 
-      .catch((error) => alert(`Error message: ${error.message} `));
+      .catch((error) => console.log(`Error message: ${error.message} `));
   }
 
   function errorCallback(error) {
@@ -85,18 +85,19 @@ const WeatherFetch = () => {
     return date;
   }
 
-  // function unixToTime(time) {
-  //   const timeObj = new Date(time * 1000);
-  //   const utcString = timeObj.getUTCHours();
-  //   const finalTime = utcString % 12;
-  //   const ampm = timeObj.getHours() >= 12 ? "PM" : "AM";
+  function unixToTime(time) {
+    const timeObj = new Date(time * 1000);
+    const utcString = timeObj.getHours();
+    const finalTime = utcString % 12;
+    const ampm = utcString >= 12 ? "PM" : "AM";
 
-  //   if (finalTime === 0) {
-  //     return 12 ;
-  //   } else {
-  //     return finalTime;
-  //   }
-  // }
+    if (finalTime === 0) {
+      return 12 + ampm;
+    } else {
+      return finalTime + ampm;
+    }
+    // return finalTime
+  }
 
   return (
     <div>
@@ -127,6 +128,7 @@ const WeatherFetch = () => {
           weather={weather}
           farConverter={farConverter}
           celConverter={celConverter}
+          unixToTime={unixToTime}
         />
       )}
       <br/>
