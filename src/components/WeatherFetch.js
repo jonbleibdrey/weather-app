@@ -3,6 +3,7 @@ import axios from "axios";
 import CurrentWeatherList from "./CurrentWeatherList";
 import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
+import SearchBar from "./SearchBar";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -13,6 +14,7 @@ const WeatherFetch = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
+
   require("dotenv").config();
 
   useEffect(() => {
@@ -96,7 +98,6 @@ const WeatherFetch = () => {
     } else {
       return finalTime + ampm;
     }
-    // return finalTime
   }
 
   return (
@@ -107,6 +108,7 @@ const WeatherFetch = () => {
         <br />
         Zip Code: {zipCode}
       </h1>
+      <SearchBar/>
       <br/>
       Current Weather:
       {isLoading && <div>Loading...</div>}

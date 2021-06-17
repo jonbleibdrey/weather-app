@@ -2,6 +2,9 @@ import React from "react";
 
 const HourlyWeatherList = ({ weather, farConverter,
   celConverter, unixToTime }) => {
+
+    
+
   return (
     <div>
       <br/>
@@ -9,7 +12,7 @@ const HourlyWeatherList = ({ weather, farConverter,
         weather.hourly.slice([0], [12]).map((hour) => (
           <div>
            {unixToTime(hour.dt)}: {farConverter(hour.temp)}°/ 
-             {celConverter(hour.temp)}°
+             {celConverter(hour.temp)}°, weather: {hour.weather[0].description}
           
           </div>
         ))

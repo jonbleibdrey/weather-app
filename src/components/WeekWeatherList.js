@@ -14,7 +14,7 @@ const WeekWeatherList = ({
           <div>
             Tempature: {farConverter(day.temp.day)}° , Min tempature:{" "}
             {farConverter(day.temp.min)}° , Max tempature{" "}
-            {farConverter(day.temp.max)}°
+            {farConverter(day.temp.max)}°, weather: {day.weather[0].description}
           </div>
         </div>
       ))}
