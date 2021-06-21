@@ -4,7 +4,7 @@ import SearchResult from "./SearchResult";
 require("dotenv").config();
 
 const SearchBar = () => {
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
 
