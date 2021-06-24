@@ -4,6 +4,7 @@ import CurrentWeatherList from "./CurrentWeatherList";
 import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
 import SearchBar from "./SearchBar";
+import Footer from "./Footer";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -101,16 +102,23 @@ const WeatherFetch = () => {
   }
 
   return (
-    <div>
+
+    <div className="parent">
       {console.log(weather)}
-      <br />
+    <header className="pink section">
+      Header
       <SearchBar />
+      </header>
+    <div className="left-side blue section" contenteditable>
+      Left Sidebar
       <h1>
         Weather near {town}, {weather && weather.name}
         <br />
         Zip Code: {zipCode}
       </h1>
-      <h2>Local Weather:</h2>
+      </div>
+    <main className="section coral" contenteditable> 
+    <h2>Local Weather:</h2>
       {isLoading && <div>Loading...</div>}
       {weather && (
         <CurrentWeatherList
@@ -122,7 +130,10 @@ const WeatherFetch = () => {
           windConverter={windConverter}
         />
       )}
-      <br />
+    Main Content
+    </main>
+    <div className="right-side yellow section" contenteditable>
+      Right Sidebar
       <h2>Hourly Weather:</h2>
       {isLoading && <div>Loading...</div>}
       <br />
@@ -134,8 +145,7 @@ const WeatherFetch = () => {
           unixToTime={unixToTime}
         />
       )}
-      <br />
-      <h2>Weekly Weather:</h2>
+       <h2>Weekly Weather:</h2>
       {isLoading && <div>Loading...</div>}
       <br />
       {weather && (
@@ -146,7 +156,12 @@ const WeatherFetch = () => {
           dayConverter={dayConverter}
         />
       )}
-    </div>
+      </div>
+    <footer className="green section">
+      Footer
+      <Footer />
+      </footer>
+  </div>
   );
 };
 
