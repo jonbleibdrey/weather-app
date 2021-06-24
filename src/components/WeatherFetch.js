@@ -6,8 +6,10 @@ import WeekWeatherList from "./WeekWeatherList";
 import WeatherLocationText from "./WeatherLocationText";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
-import "../css/weatherFetch.css";
 import Loading from "./Loading";
+import Header from "./Header";
+import About from "./About";
+import "../css/weatherFetch.css";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -108,7 +110,14 @@ const WeatherFetch = () => {
     <div className="parent">
       {console.log(weather)}
       <header className="header">
-        <SearchBar />
+        {isLoading ? (
+          <Header />
+        ) : (
+          <>
+            <About />
+            <SearchBar />
+          </>
+        )}
       </header>
       <div className="left" contenteditable>
         <Loading isLoading={isLoading} />
@@ -157,7 +166,6 @@ const WeatherFetch = () => {
         )}
       </div>
       <footer className="footer">
-        Footer
         <Footer />
       </footer>
     </div>
