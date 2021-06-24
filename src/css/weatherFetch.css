@@ -1,39 +1,47 @@
 .parent {
     display: grid;
     height: 100vh;
-    grid-template: auto 1fr auto / auto 1fr auto
+    grid-template: unset 
   }
 
   .header {
     background: lightpink;
     padding: 2rem;
-    grid-column: 1 / 4;
+    grid-column: 1 / 5;
   }
 
-  .left-side {
+  .left {
     background: lightblue;
+    padding: 2rem;
     grid-column: 1 / 2;
   }
 
-  .middle {
+  .main-content{
+    padding: 2rem;
     background: coral;
     grid-column: 2 / 3;
   }
-
-  .right-side {
-    background: yellow;
+  .main-middle {
+    padding: 2rem;
+    background: palegreen;
     grid-column: 3 / 4;
+  }
+
+  .right {
+    background: yellow;
+    padding: 2rem;
+    grid-column: 4 / 5;
   }
 
   .footer {
     background: wheat;
     padding: 2rem;
     text-align: center;
-    grid-column: 1 / 4;
+    grid-column: 1 / 5;
   }
 
   body {
-    font-family: system-ui, sans-serif;
+    font-family: monospace;
   }
 
   .left-side,

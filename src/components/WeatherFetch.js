@@ -5,7 +5,7 @@ import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
-import "../css/weatherFetch.css"
+import "../css/weatherFetch.css";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -103,66 +103,72 @@ const WeatherFetch = () => {
   }
 
   return (
-
     <div className="parent">
       {console.log(weather)}
-    <header className="header">
-      Header
-      <SearchBar />
+      <header className="header">
+        Header
+        <SearchBar />
       </header>
-    <div className="left-side" contenteditable>
-      Left Sidebar
-      <h1>
-        Weather near {town}, {weather && weather.name}
+      <div className="left" contenteditable>
+        Left Sidebar
+        <h1>
+          Weather near you:
+        </h1>
+          <br />
+          <h2>
+           {town},{statess}{weather && weather.name}
+          </h2>
+          Zip: {zipCode}
+          <br />
+      </div>
+      <div className="main-content" contenteditable>
+        Main Content
+        <h1>Hourly Weather:</h1>
+        {isLoading && <div>Loading...</div>}
         <br />
-        Zip Code: {zipCode}
-      </h1>
+        {weather && (
+          <HourlyWeatherList
+            weather={weather}
+            farConverter={farConverter}
+            celConverter={celConverter}
+            unixToTime={unixToTime}
+          />
+        )}
       </div>
-    <main className="middle" contenteditable> 
-      Main Content
-    <h2>Local Weather:</h2>
-      {isLoading && <div>Loading...</div>}
-      {weather && (
-        <CurrentWeatherList
-          statess={statess}
-          country={country}
-          weather={weather}
-          farConverter={farConverter}
-          celConverter={celConverter}
-          windConverter={windConverter}
-        />
-      )}
-    </main>
-    <div className="right-side" contenteditable>
-      Right Sidebar
-      <h2>Hourly Weather:</h2>
-      {isLoading && <div>Loading...</div>}
-      <br />
-      {weather && (
-        <HourlyWeatherList
-          weather={weather}
-          farConverter={farConverter}
-          celConverter={celConverter}
-          unixToTime={unixToTime}
-        />
-      )}
-       <h2>Weekly Weather:</h2>
-      {isLoading && <div>Loading...</div>}
-      <br />
-      {weather && (
-        <WeekWeatherList
-          weather={weather}
-          farConverter={farConverter}
-          celConverter={celConverter}
-          dayConverter={dayConverter}
-        />
-      )}
+      <div className="main-middle" contenteditable>
+        Main-middle Content
+        <h1>Weekly Weather:</h1>
+        {isLoading && <div>Loading...</div>}
+        <br />
+        {weather && (
+          <WeekWeatherList
+            weather={weather}
+            farConverter={farConverter}
+            celConverter={celConverter}
+            dayConverter={dayConverter}
+          />
+        )}
       </div>
-    <footer className="footer">
-      Footer
-      <Footer />
+      <div className="right" contenteditable>
+        Right Sidebar
+        <h1>Local Weather:</h1>
+        {isLoading && <div>Loading...</div>}
+        {weather && (
+          <CurrentWeatherList
+            statess={statess}
+            country={country}
+            weather={weather}
+            farConverter={farConverter}
+            celConverter={celConverter}
+            windConverter={windConverter}
+          />
+        )}
+      </div>
+      <footer className="footer">
+        Footer
+        <Footer />
       </footer>
-  </div>
+    </div>
   );
 };
 
