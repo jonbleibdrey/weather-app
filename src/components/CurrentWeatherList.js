@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/CurrentWeatherList.css";
+import Loading from "../components/Loading";
 
 const CurrentWeatherList = ({
   weather,
@@ -11,6 +12,7 @@ const CurrentWeatherList = ({
 }) => {
   return (
     <div className="contentList">
+      <h1>Local Weather:</h1>
       <ul>
         <li>State: {statess}</li>
         <li>Country: {country}</li>

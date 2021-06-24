@@ -9,6 +9,7 @@ const WeekWeatherList = ({
 }) => {
   return (
     <div>
+      <h1>Weekly Weather:</h1>
       {weather.daily.map((day) => (
         <div key={mixId()}>
           <ul>

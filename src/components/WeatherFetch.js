@@ -3,9 +3,11 @@ import axios from "axios";
 import CurrentWeatherList from "./CurrentWeatherList";
 import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
+import WeatherLocationText from "./WeatherLocationText";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import "../css/weatherFetch.css";
+import Loading from "./Loading";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -65,7 +67,7 @@ const WeatherFetch = () => {
   }
 
   function errorCallback(error) {
-    throw Error("fetch did not work");
+    throw Error("Our server is down!");
   }
 
   function farConverter(temp) {
@@ -106,40 +108,34 @@ const WeatherFetch = () => {
     <div className="parent">
       {console.log(weather)}
       <header className="header">
-        Header
         <SearchBar />
       </header>
       <div className="left" contenteditable>
-        Left Sidebar
-        <h1>
-          Weather near you:
-        </h1>
-          <br />
-          <h2>
-           {town},{statess}{weather && weather.name}
-          </h2>
-          Zip: {zipCode}
-          <br />
+        <Loading isLoading={isLoading} />
+        {weather && (
+          <WeatherLocationText
+            town={town}
+            statess={statess}
+            weather={weather}
+            zipCode={zipCode}
+          />
+        )}
       </div>
       <div className="main-content" contenteditable>
-        Main Content
-        <h1>Hourly Weather:</h1>
-        {isLoading && <div>Loading...</div>}
-        <br />
+        <Loading isLoading={isLoading} />
         {weather && (
-          <HourlyWeatherList
+          <CurrentWeatherList
+            statess={statess}
+            country={country}
             weather={weather}
             farConverter={farConverter}
             celConverter={celConverter}
-            unixToTime={unixToTime}
+            windConverter={windConverter}
           />
         )}
       </div>
       <div className="main-middle" contenteditable>
-        Main-middle Content
-        <h1>Weekly Weather:</h1>
-        {isLoading && <div>Loading...</div>}
-        <br />
+        <Loading isLoading={isLoading} />
         {weather && (
           <WeekWeatherList
             weather={weather}
@@ -150,17 +146,13 @@ const WeatherFetch = () => {
         )}
       </div>
       <div className="right" contenteditable>
-        Right Sidebar
-        <h1>Local Weather:</h1>
-        {isLoading && <div>Loading...</div>}
+        <Loading isLoading={isLoading} />
         {weather && (
-          <CurrentWeatherList
-            statess={statess}
-            country={country}
+          <HourlyWeatherList
             weather={weather}
             farConverter={farConverter}
             celConverter={celConverter}
-            windConverter={windConverter}
+            unixToTime={unixToTime}
           />
         )}
       </div>
