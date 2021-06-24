@@ -5,6 +5,7 @@ import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
+import "../css/weatherFetch.css"
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -105,11 +106,11 @@ const WeatherFetch = () => {
 
     <div className="parent">
       {console.log(weather)}
-    <header className="pink section">
+    <header className="header">
       Header
       <SearchBar />
       </header>
-    <div className="left-side blue section" contenteditable>
+    <div className="left-side" contenteditable>
       Left Sidebar
       <h1>
         Weather near {town}, {weather && weather.name}
@@ -117,7 +118,8 @@ const WeatherFetch = () => {
         Zip Code: {zipCode}
       </h1>
       </div>
-    <main className="section coral" contenteditable> 
+    <main className="middle" contenteditable> 
+      Main Content
     <h2>Local Weather:</h2>
       {isLoading && <div>Loading...</div>}
       {weather && (
@@ -130,9 +132,8 @@ const WeatherFetch = () => {
           windConverter={windConverter}
         />
       )}
-    Main Content
     </main>
-    <div className="right-side yellow section" contenteditable>
+    <div className="right-side" contenteditable>
       Right Sidebar
       <h2>Hourly Weather:</h2>
       {isLoading && <div>Loading...</div>}
@@ -157,7 +158,7 @@ const WeatherFetch = () => {
         />
       )}
       </div>
-    <footer className="green section">
+    <footer className="footer">
       Footer
       <Footer />
       </footer>
