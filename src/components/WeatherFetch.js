@@ -146,22 +146,22 @@ const WeatherFetch = () => {
       <div className="main-middle" contenteditable>
         <Loading isLoading={isLoading} />
         {weather && (
-          <WeekWeatherList
+          <HourlyWeatherList
             weather={weather}
             farConverter={farConverter}
             celConverter={celConverter}
-            dayConverter={dayConverter}
+            unixToTime={unixToTime}
           />
         )}
       </div>
       <div className="right" contenteditable>
         <Loading isLoading={isLoading} />
         {weather && (
-          <HourlyWeatherList
+          <WeekWeatherList
             weather={weather}
             farConverter={farConverter}
             celConverter={celConverter}
-            unixToTime={unixToTime}
+            dayConverter={dayConverter}
           />
         )}
       </div>

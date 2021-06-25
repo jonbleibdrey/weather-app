@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/CurrentWeatherList.css";
-import Loading from "../components/Loading";
+import { TiWeatherCloudy } from 'react-icons/ti';
+import { TiWeatherSunny } from 'react-icons/ti';
+import { TiWeatherSnow } from 'react-icons/ti';
+import { TiWeatherDownpour } from 'react-icons/ti';
+import { TiWeatherShower } from 'react-icons/ti';
+import { TiWeatherStormy } from 'react-icons/ti';
+// import Loading from "../components/Loading";
 
 const CurrentWeatherList = ({
   weather,
@@ -10,6 +16,35 @@ const CurrentWeatherList = ({
   windConverter,
   celConverter,
 }) => {
+  console.log(weather);
+  const [icons, setIcons] = useState(null);
+
+  useEffect(() => {
+    const weatherType = weather.current.weather[0].main
+
+    function weatherIcon() {
+      switch (weatherType) {
+        case "Clouds":
+          return setIcons(<TiWeatherCloudy/>)
+        case "Clear":
+          return setIcons(<TiWeatherSunny/>)
+        case "Snow":
+          return setIcons(<TiWeatherSnow/>)
+        case "Rain":
+          return setIcons(<TiWeatherDownpour/>)
+        case "Drizzle":
+          return setIcons(<TiWeatherShower/>)
+        case "Thunderstorm":
+          return setIcons(<TiWeatherStormy/>)
+        default:
+          return setIcons(<TiWeatherSunny/>)
+      }
+    } 
+    weatherIcon()
+  })
+
+  
+
   return (
     <div className="contentList">
       <h1>Local Weather:</h1>
@@ -24,8 +59,8 @@ const CurrentWeatherList = ({
           Feels like: {farConverter(weather.current.feels_like)}°/{" "}
           {celConverter(weather.current.feels_like)}°
         </li>
-        <li>Wind Speed: {windConverter(weather.current.wind_speed)}</li>
-        <li>MPH Weather: {weather.current.weather[0].description}</li>
+        <li>Wind Speed: {windConverter(weather.current.wind_speed)} mph</li>
+        <li>Weather: {icons}</li>
       </ul>
     </div>
   );
