@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CurrentWeatherList from "./CurrentWeatherList";
+import LocalWeatherList from "./LocalWeatherList";
 import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
 import WeatherLocationText from "./WeatherLocationText";
@@ -158,7 +158,7 @@ const WeatherFetch = () => {
       <div className="main-content" contenteditable>
         <Loading isLoading={isLoading} />
         {weather && (
-          <CurrentWeatherList
+          <LocalWeatherList
             statess={statess}
             country={country}
             weather={weather}

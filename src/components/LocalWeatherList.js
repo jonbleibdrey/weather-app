@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/CurrentWeatherList.css";
 
-const CurrentWeatherList = ({
+const LocalWeatherList = ({
   weather,
   statess,
   country,
@@ -31,4 +31,4 @@ const CurrentWeatherList = ({
   );
 };
 
-export default CurrentWeatherList;
+export default LocalWeatherList;
