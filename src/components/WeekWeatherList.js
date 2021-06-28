@@ -1,37 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { v4 as mixId } from "uuid";
-import { TiWeatherCloudy } from "react-icons/ti";
-import { TiWeatherSunny } from "react-icons/ti";
-import { TiWeatherSnow } from "react-icons/ti";
-import { TiWeatherDownpour } from "react-icons/ti";
-import { TiWeatherShower } from "react-icons/ti";
-import { TiWeatherStormy } from "react-icons/ti";
 
 const WeekWeatherList = ({
   weather,
   farConverter,
   celConverter,
   dayConverter,
+  weatherIcon,
 }) => {
-  const renderSwitch = (info) => {
-    switch (info) {
-      case "Clouds":
-        return <TiWeatherCloudy />;
-      case "Clear":
-        return <TiWeatherSunny />;
-      case "Snow":
-        return <TiWeatherSnow />;
-      case "Drizzle":
-        return <TiWeatherShower />;
-      case "Thunderstorm":
-        return <TiWeatherStormy />;
-      case "Rain":
-        return <TiWeatherDownpour />;
-      default:
-        return <TiWeatherSunny />;
-    }
-  };
-
   return (
     <div>
       <h1>Weekly Weather:</h1>
@@ -46,7 +22,7 @@ const WeekWeatherList = ({
               <br />
               Max tempature {farConverter(day.temp.max)}°,
               <br />
-              weather: {renderSwitch(day.weather[0].main)}
+              weather: {weatherIcon(day.weather[0].main)}
             </li>
           </ul>
           <div></div>

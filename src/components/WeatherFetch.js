@@ -9,6 +9,12 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import Header from "./Header";
 import About from "./About";
+import { TiWeatherCloudy } from "react-icons/ti";
+import { TiWeatherSunny } from "react-icons/ti";
+import { TiWeatherSnow } from "react-icons/ti";
+import { TiWeatherDownpour } from "react-icons/ti";
+import { TiWeatherShower } from "react-icons/ti";
+import { TiWeatherStormy } from "react-icons/ti";
 import "../css/weatherFetch.css";
 
 const WeatherFetch = () => {
@@ -106,6 +112,25 @@ const WeatherFetch = () => {
     }
   }
 
+  const weatherIcon = (info) => {
+    switch (info) {
+      case "Clouds":
+        return <TiWeatherCloudy />;
+      case "Clear":
+        return <TiWeatherSunny />;
+      case "Snow":
+        return <TiWeatherSnow />;
+      case "Drizzle":
+        return <TiWeatherShower />;
+      case "Thunderstorm":
+        return <TiWeatherStormy />;
+      case "Rain":
+        return <TiWeatherDownpour />;
+      default:
+        return <TiWeatherSunny />;
+    }
+  };
+
   return (
     <div className="parent">
       {console.log(weather)}
@@ -140,6 +165,7 @@ const WeatherFetch = () => {
             farConverter={farConverter}
             celConverter={celConverter}
             windConverter={windConverter}
+            weatherIcon={weatherIcon}
           />
         )}
       </div>
@@ -151,6 +177,7 @@ const WeatherFetch = () => {
             farConverter={farConverter}
             celConverter={celConverter}
             unixToTime={unixToTime}
+            weatherIcon={weatherIcon}
           />
         )}
       </div>
@@ -162,6 +189,7 @@ const WeatherFetch = () => {
             farConverter={farConverter}
             celConverter={celConverter}
             dayConverter={dayConverter}
+            weatherIcon={weatherIcon}
           />
         )}
       </div>
