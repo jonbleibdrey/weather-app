@@ -17,37 +17,25 @@ const CurrentWeatherList = ({
   celConverter,
 }) => {
   console.log(weather);
-  const [icons, setIcons] = useState(null);
 
-  useEffect(() => {
-    const weatherType = weather.current.weather[0].main;
-
-    function weatherIcon() {
-      switch (weatherType) {
-        case "Clouds":
-          setIcons(<TiWeatherCloudy />);
-          break;
-        case "Clear":
-          setIcons(<TiWeatherSunny />);
-          break;
-        case "Snow":
-          setIcons(<TiWeatherSnow />);
-          break;
-        case "Rain":
-          setIcons(<TiWeatherDownpour />);
-          break;
-        case "Drizzle":
-          setIcons(<TiWeatherShower />);
-          break;
-        case "Thunderstorm":
-          setIcons(<TiWeatherStormy />);
-          break;
-        default:
-          setIcons(<TiWeatherSunny />);
-      }
+  const renderSwitch = (info) => {
+    switch (info) {
+      case "Clouds":
+        return <TiWeatherCloudy />;
+      case "Clear":
+        return <TiWeatherSunny />;
+      case "Snow":
+        return <TiWeatherSnow />;
+      case "Rain":
+        return <TiWeatherDownpour />;
+      case "Drizzle":
+        return <TiWeatherShower />;
+      case "Thunderstorm":
+        return <TiWeatherStormy />;
+      default:
+        return <TiWeatherSunny />;
     }
-    weatherIcon();
-  },[]);
+  };
 
   return (
     <div className="contentList">
@@ -64,7 +52,7 @@ const CurrentWeatherList = ({
           {celConverter(weather.current.feels_like)}°
         </li>
         <li>Wind Speed: {windConverter(weather.current.wind_speed)} mph</li>
-        <li>Weather: {icons}</li>
+        <li>Weather: {renderSwitch(weather.current.weather[0].main)}</li>
       </ul>
     </div>
   );

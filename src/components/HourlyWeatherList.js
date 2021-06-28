@@ -13,20 +13,25 @@ const HourlyWeatherList = ({
   celConverter,
   unixToTime,
 }) => {
-  const [icons, setIcons] = useState([]);
-  const [list, setLists] = useState([]);
 
-  // useEffect(() => {
-  //   function weatherIcon() {
-  //     const weatherIcons = weather.hourly.map(e => () => {
-
-  //     })
-  //   }
-
-  //      console.log("icons: ", list)
-  //       weatherIcon()
-
-  // },[]);
+  const renderSwitch = (info) => {
+    switch (info) {
+      case "Clouds":
+        return <TiWeatherCloudy />;
+      case "Clear":
+        return <TiWeatherSunny />;
+      case "Snow":
+        return <TiWeatherSnow />;
+      case "Rain":
+        return <TiWeatherDownpour />;
+      case "Drizzle":
+        return <TiWeatherShower />;
+      case "Thunderstorm":
+        return <TiWeatherStormy />;
+      default:
+        return <TiWeatherSunny />;
+    }
+  };
 
   return (
     <div>
@@ -37,47 +42,7 @@ const HourlyWeatherList = ({
             <li>
               {unixToTime(hour.dt)}: {farConverter(hour.temp)}°/
               {celConverter(hour.temp)}°, weather:
-              {() => {
-                switch (hour.weather[0].main) {
-                  case "Clouds":
-                    <TiWeatherCloudy />;
-                    break;
-                  case "Clear":
-                    <TiWeatherSunny />;
-                    break;
-                  case "Snow":
-                    <TiWeatherSnow />;
-                    break;
-                  case "Rain":
-                    <TiWeatherDownpour />;
-                    break;
-                  case "Drizzle":
-                    <TiWeatherShower />;
-                    break;
-                  case "Thunderstorm":
-                    <TiWeatherStormy />;
-                    break;
-                  default:
-                    <TiWeatherSunny />;
-                }
-
-                // if (hour.weather[0].main === "Clear") {
-                //   <TiWeatherSunny />;
-                // } else if (hour.weather[0].main === "Clouds") {
-                //   <TiWeatherCloudy />;
-                // } else if (hour.weather[0].main === "Snow") {
-                //   <TiWeatherSnow />;
-                // } else if (hour.weather[0].main === "Rain") {
-                //   <TiWeatherDownpour />;
-                // } else if (hour.weather[0].main === "Drizzle") {
-                //   <TiWeatherShower />;
-                // } else if (hour.weather[0].main === "Thunderstorm") {
-                //   <TiWeatherStormy />;
-                // } else {
-                //   <TiWeatherSunny />;
-                // }
-              }}
-              {/* {hour.weather[0].description} */}
+              {renderSwitch(hour.weather[0].main)}
             </li>
           </ul>
         </div>

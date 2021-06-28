@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as mixId } from "uuid";
-import { TiWeatherCloudy } from 'react-icons/ti';
-import { TiWeatherSunny } from 'react-icons/ti';
-import { TiWeatherSnow } from 'react-icons/ti';
-import { TiWeatherDownpour } from 'react-icons/ti';
-import { TiWeatherShower } from 'react-icons/ti';
-import { TiWeatherStormy } from 'react-icons/ti';
+import { TiWeatherCloudy } from "react-icons/ti";
+import { TiWeatherSunny } from "react-icons/ti";
+import { TiWeatherSnow } from "react-icons/ti";
+import { TiWeatherDownpour } from "react-icons/ti";
+import { TiWeatherShower } from "react-icons/ti";
+import { TiWeatherStormy } from "react-icons/ti";
 
 const WeekWeatherList = ({
   weather,
@@ -13,39 +13,24 @@ const WeekWeatherList = ({
   celConverter,
   dayConverter,
 }) => {
- 
-  const [icons, setIcons] = useState([]);
-
-  useEffect(() => {
-    const weatherType = weather.current.weather[0].main;
-
-    function weatherIcon() {
-      switch (weatherType) {
-        case "Clouds":
-          setIcons(<TiWeatherCloudy />);
-          break;
-        case "Clear":
-          setIcons(<TiWeatherSunny />);
-          break;
-        case "Snow":
-          setIcons(<TiWeatherSnow />);
-          break;
-        case "Rain":
-          setIcons(<TiWeatherDownpour />);
-          break;
-        case "Drizzle":
-          setIcons(<TiWeatherShower />);
-          break;
-        case "Thunderstorm":
-          setIcons(<TiWeatherStormy />);
-          break;
-        default:
-          setIcons(<TiWeatherSunny />);
-      }
+  const renderSwitch = (info) => {
+    switch (info) {
+      case "Clouds":
+        return <TiWeatherCloudy />;
+      case "Clear":
+        return <TiWeatherSunny />;
+      case "Snow":
+        return <TiWeatherSnow />;
+      case "Drizzle":
+        return <TiWeatherShower />;
+      case "Thunderstorm":
+        return <TiWeatherStormy />;
+      case "Rain":
+        return <TiWeatherDownpour />;
+      default:
+        return <TiWeatherSunny />;
     }
-    weatherIcon();
-  },[]);
-
+  };
 
   return (
     <div>
@@ -61,7 +46,7 @@ const WeekWeatherList = ({
               <br />
               Max tempature {farConverter(day.temp.max)}°,
               <br />
-              weather: {day.weather[0].description}{}
+              weather: {renderSwitch(day.weather[0].main)}
             </li>
           </ul>
           <div></div>
@@ -79,7 +64,6 @@ export default WeekWeatherList;
 // const [rain, setRain] = useState(null);
 // const [drizzle, setDrizzle] = useState(null);
 // const [tStorm, setTStorm] = useState(null);
-
 
 // useEffect(() => {
 //   const weatherType = weather.current.weather[0].main;
