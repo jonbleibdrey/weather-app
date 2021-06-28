@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../css/CurrentWeatherList.css";
-import { TiWeatherCloudy } from 'react-icons/ti';
-import { TiWeatherSunny } from 'react-icons/ti';
-import { TiWeatherSnow } from 'react-icons/ti';
-import { TiWeatherDownpour } from 'react-icons/ti';
-import { TiWeatherShower } from 'react-icons/ti';
-import { TiWeatherStormy } from 'react-icons/ti';
+import { TiWeatherCloudy } from "react-icons/ti";
+import { TiWeatherSunny } from "react-icons/ti";
+import { TiWeatherSnow } from "react-icons/ti";
+import { TiWeatherDownpour } from "react-icons/ti";
+import { TiWeatherShower } from "react-icons/ti";
+import { TiWeatherStormy } from "react-icons/ti";
 // import Loading from "../components/Loading";
 
 const CurrentWeatherList = ({
@@ -20,30 +20,34 @@ const CurrentWeatherList = ({
   const [icons, setIcons] = useState(null);
 
   useEffect(() => {
-    const weatherType = weather.current.weather[0].main
+    const weatherType = weather.current.weather[0].main;
 
     function weatherIcon() {
       switch (weatherType) {
         case "Clouds":
-          return setIcons(<TiWeatherCloudy/>)
+          setIcons(<TiWeatherCloudy />);
+          break;
         case "Clear":
-          return setIcons(<TiWeatherSunny/>)
+          setIcons(<TiWeatherSunny />);
+          break;
         case "Snow":
-          return setIcons(<TiWeatherSnow/>)
+          setIcons(<TiWeatherSnow />);
+          break;
         case "Rain":
-          return setIcons(<TiWeatherDownpour/>)
+          setIcons(<TiWeatherDownpour />);
+          break;
         case "Drizzle":
-          return setIcons(<TiWeatherShower/>)
+          setIcons(<TiWeatherShower />);
+          break;
         case "Thunderstorm":
-          return setIcons(<TiWeatherStormy/>)
+          setIcons(<TiWeatherStormy />);
+          break;
         default:
-          return setIcons(<TiWeatherSunny/>)
+          setIcons(<TiWeatherSunny />);
       }
-    } 
-    weatherIcon()
-  })
-
-  
+    }
+    weatherIcon();
+  },[]);
 
   return (
     <div className="contentList">
