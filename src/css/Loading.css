@@ -1,0 +1,5 @@
+.loading-spinner {
+    display: grid;
+    justify-content: center;
+    margin-right: 3vw;
+}
