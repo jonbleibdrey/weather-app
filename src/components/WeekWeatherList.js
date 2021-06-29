@@ -23,6 +23,8 @@ const WeekWeatherList = ({
               Max tempature {farConverter(day.temp.max)}°,
               <br />
               weather: {weatherIcon(day.weather[0].main)}
+              <br />
+              details: {day.weather[0].description}
             </li>
           </ul>
           <div></div>

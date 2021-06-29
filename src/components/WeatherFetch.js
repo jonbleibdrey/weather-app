@@ -144,7 +144,7 @@ const WeatherFetch = () => {
           </>
         )}
       </header>
-      <div className="left" contenteditable>
+      <div className="left" >
         <Loading isLoading={isLoading} />
         {weather && (
           <WeatherLocationText
@@ -155,7 +155,7 @@ const WeatherFetch = () => {
           />
         )}
       </div>
-      <div className="main-content" contenteditable>
+      <div className="main-content" >
         <Loading isLoading={isLoading} />
         {weather && (
           <LocalWeatherList
@@ -169,7 +169,7 @@ const WeatherFetch = () => {
           />
         )}
       </div>
-      <div className="main-middle" contenteditable>
+      <div className="main-middle" >
         <Loading isLoading={isLoading} />
         {weather && (
           <HourlyWeatherList
@@ -181,7 +181,7 @@ const WeatherFetch = () => {
           />
         )}
       </div>
-      <div className="right" contenteditable>
+      <div className="right" >
         <Loading isLoading={isLoading} />
         {weather && (
           <WeekWeatherList
