@@ -7,6 +7,7 @@ const SearchBar = () => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
+  const [showResults, setShowResults] = useState(false);
 
   function handleSubmit(evt) {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -21,25 +22,36 @@ const SearchBar = () => {
     setSearch("");
   }
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={search}
-          placeholder="search state"
-          onChange={(e) => setSearch(e.target.value.toUpperCase())}
-        />
-        <button type="submit">submit</button>
-      </form>
-      {err === true ? "Put in a state" : " "}
+  const searchBar = () => {
+    setShowResults(!showResults);
+  };
 
-      {searchResult.length === 0 ? (
-        <div> </div>
+  return (
+    <>
+      <button onClick={searchBar}> Search for something</button>
+      {showResults ? (
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={search}
+              placeholder="search state"
+              onChange={(e) => setSearch(e.target.value.toUpperCase())}
+            />
+            <button type="submit">submit</button>
+          </form>
+          {err === true ? "Put in a state" : " "}
+
+          {searchResult.length === 0 ? (
+            <div> </div>
+          ) : (
+            <SearchResult searchResult={searchResult} />
+          )}
+        </div>
       ) : (
-        <SearchResult searchResult={searchResult} />
+        <div> </div>
       )}
-    </div>
+    </>
   );
 };
 

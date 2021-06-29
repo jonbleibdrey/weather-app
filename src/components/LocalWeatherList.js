@@ -26,6 +26,7 @@ const LocalWeatherList = ({
         </li>
         <li>Wind Speed: {windConverter(weather.current.wind_speed)} mph</li>
         <li>Weather: {weatherIcon(weather.current.weather[0].main)}</li>
+        <li>Details: {weather.current.weather[0].description}</li>
       </ul>
     </div>
   );
