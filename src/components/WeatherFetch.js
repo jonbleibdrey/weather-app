@@ -132,71 +132,69 @@ const WeatherFetch = () => {
   };
 
   return (
-    <div className="parent">
-      {console.log(weather)}
-      <header className="header">
-        {isLoading ? (
+    <>
+      {isLoading ? (
+        <div>
           <Header />
-        ) : (
-          <>
-            <About />
-            <SearchBar />
-          </>
-        )}
-      </header>
-      <div className="left" >
-        <Loading isLoading={isLoading} />
-        {weather && (
-          <WeatherLocationText
-            town={town}
-            statess={statess}
-            weather={weather}
-            zipCode={zipCode}
-          />
-        )}
-      </div>
-      <div className="main-content" >
-        <Loading isLoading={isLoading} />
-        {weather && (
-          <LocalWeatherList
-            statess={statess}
-            country={country}
-            weather={weather}
-            farConverter={farConverter}
-            celConverter={celConverter}
-            windConverter={windConverter}
-            weatherIcon={weatherIcon}
-          />
-        )}
-      </div>
-      <div className="main-middle" >
-        <Loading isLoading={isLoading} />
-        {weather && (
-          <HourlyWeatherList
-            weather={weather}
-            farConverter={farConverter}
-            celConverter={celConverter}
-            unixToTime={unixToTime}
-            weatherIcon={weatherIcon}
-          />
-        )}
-      </div>
-      <div className="right" >
-        <Loading isLoading={isLoading} />
-        {weather && (
-          <WeekWeatherList
-            weather={weather}
-            farConverter={farConverter}
-            celConverter={celConverter}
-            dayConverter={dayConverter}
-            weatherIcon={weatherIcon}
-          />
-        )}
-      </div>
-      <footer className="footer">
-        <Footer />
-      </footer>
-    </div>
+          <Loading isLoading={isLoading}/>
+        </div>
+      ) : (
+        <div className="parent">
+          <header className="header">
+                <About />
+                <SearchBar />
+          </header>
+          <div className="left">
+            {weather && (
+              <WeatherLocationText
+                town={town}
+                statess={statess}
+                weather={weather}
+                zipCode={zipCode}
+              />
+            )}
+          </div>
+          <div className="main-content">
+            {weather && (
+              <LocalWeatherList
+                statess={statess}
+                country={country}
+                weather={weather}
+                farConverter={farConverter}
+                celConverter={celConverter}
+                windConverter={windConverter}
+                weatherIcon={weatherIcon}
+              />
+            )}
+          </div>
+          <div className="main-middle">
+            {weather && (
+              <HourlyWeatherList
+                weather={weather}
+                farConverter={farConverter}
+                celConverter={celConverter}
+                unixToTime={unixToTime}
+                weatherIcon={weatherIcon}
+              />
+            )}
+          </div>
+          <div className="right">
+            {weather && (
+              <WeekWeatherList
+                weather={weather}
+                farConverter={farConverter}
+                celConverter={celConverter}
+                dayConverter={dayConverter}
+                weatherIcon={weatherIcon}
+              />
+            )}
+          </div>
+          <footer className="footer">
+            <Footer />
+          </footer>
+        </div>
+      )}
+    </>
   );
 };
 

@@ -28,14 +28,14 @@ const SearchBar = () => {
 
   return (
     <>
-      <button onClick={searchBar}> Search for something</button>
+      <button onClick={searchBar}> ❤️Search a state❤️ </button>
       {showResults ? (
         <div>
           <form onSubmit={handleSubmit}>
             <input
               type="text"
               value={search}
-              placeholder="search state"
+              placeholder="search a  state"
               onChange={(e) => setSearch(e.target.value.toUpperCase())}
             />
             <button type="submit">submit</button>
