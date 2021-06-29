@@ -1,8 +1,8 @@
-.header{
-    display: grid;
-    justify-content: center;
+.header-logo {
+  display: grid;
+  justify-content: center;
 }
-.headerH1{
-    margin-left: 13vw;
-    margin-top: 3vw;
+.headerH1 {
+  margin-left: 13vw;
+  margin-top: 3vw;
 }

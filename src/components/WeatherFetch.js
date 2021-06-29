@@ -136,13 +136,14 @@ const WeatherFetch = () => {
       {isLoading ? (
         <div>
           <Header />
-          <Loading isLoading={isLoading}/>
+          <br />
+          <Loading isLoading={isLoading} />
         </div>
       ) : (
         <div className="parent">
           <header className="header">
-                <About />
-                <SearchBar />
+            <About />
+            <SearchBar />
           </header>
           <div className="left">
             {weather && (

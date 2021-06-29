@@ -1,6 +1,6 @@
 import React from "react";
 import Spinner from "react-bootstrap/Spinner";
-import "../css/Loading.css"
+import "../css/Loading.css";
 
 const Loading = ({ isLoading }) => {
   return (
@@ -11,7 +11,7 @@ const Loading = ({ isLoading }) => {
             <Spinner animation="grow" variant="warning" size="lg" />
             <Spinner animation="grow" variant="primary" size="lg" />
             <Spinner animation="grow" variant="danger" size="lg" />
-            Loading 
+            Loading
             <Spinner animation="grow" variant="warning" size="lg" />
             <Spinner animation="grow" variant="primary" size="lg" />
             <Spinner animation="grow" variant="danger" size="lg" />

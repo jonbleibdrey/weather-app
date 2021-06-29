@@ -16,10 +16,10 @@ const HourlyWeatherList = ({
           <ul>
             <li>
               {unixToTime(hour.dt)}: {farConverter(hour.temp)}°/
-              {celConverter(hour.temp)}° 
-              <br/>
+              {celConverter(hour.temp)}°
+              <br />
               weather: {weatherIcon(hour.weather[0].main)}
-              <br/>
+              <br />
               details: {hour.weather[0].description}
             </li>
           </ul>
