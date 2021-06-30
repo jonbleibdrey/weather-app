@@ -28,7 +28,18 @@ const SearchBar = () => {
 
   return (
     <>
-      <button onClick={searchBar}> ❤️Search a state❤️ </button>
+      <button
+        style={{
+          border: "none",
+          fontSize: "1.7rem",
+          borderRadius: "20px",
+          boxShadow: "-5px 9px 20px -8px black",
+        }}
+        onClick={searchBar}
+      >
+        {" "}
+        ❤️Search a state❤️{" "}
+      </button>
       {showResults ? (
         <div>
           <form onSubmit={handleSubmit}>

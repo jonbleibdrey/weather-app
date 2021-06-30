@@ -4,7 +4,6 @@ import LocalWeatherList from "./LocalWeatherList";
 import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
 import WeatherLocationText from "./WeatherLocationText";
-import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import Loading from "./Loading";
 import Header from "./Header";

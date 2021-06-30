@@ -1,0 +1,10 @@
+.about-container {
+  position: relative;
+}
+
+.aboutH1 {
+  position: absolute;
+  left: 3%;
+  margin-top: 3%;
+  font-size: 2vw;
+}
