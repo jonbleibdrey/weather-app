@@ -25,9 +25,14 @@ const HourlyWeatherList = ({
                   {unixToTime(hour.dt)}: {farConverter(hour.temp)}°/
                   {celConverter(hour.temp)}°
                   <br />
-                  weather: {weatherIcon(hour.weather[0].main)}
+                  Feels like: {farConverter(hour.feels_like)}°/{" "}
+                  {celConverter(hour.feels_like)}°
                   <br />
-                  details: {hour.weather[0].description}
+                  Weather: {weatherIcon(hour.weather[0].main)}
+                  <br />
+                  Details: {hour.weather[0].description}
+                  <br />
+                  Humidity: {hour.humidity}%
                 </li>
               </ul>
             </div>
@@ -42,16 +47,17 @@ const HourlyWeatherList = ({
                   {unixToTime(hour.dt)}: {farConverter(hour.temp)}°/
                   {celConverter(hour.temp)}°
                   <br />
-                  weather: {weatherIcon(hour.weather[0].main)}
+                  Feels like: {farConverter(hour.feels_like)}°/{" "}
+                  {celConverter(hour.feels_like)}°
                   <br />
-                  details: {hour.weather[0].description}
+                  Weather: {weatherIcon(hour.weather[0].main)}
                 </li>
               </ul>
             </div>
           ))}
         </div>
       )}
-      <button onClick={showWeather}> more weather info</button>
+      <button onClick={showWeather}> More time & info</button>
     </div>
   );
 };

@@ -150,6 +150,8 @@ const WeatherFetch = () => {
                 statess={statess}
                 weather={weather}
                 zipCode={zipCode}
+                country={country}
+                unixToTime={unixToTime}
               />
             )}
           </div>
@@ -157,7 +159,6 @@ const WeatherFetch = () => {
             {weather && (
               <LocalWeatherList
                 statess={statess}
-                country={country}
                 weather={weather}
                 farConverter={farConverter}
                 celConverter={celConverter}

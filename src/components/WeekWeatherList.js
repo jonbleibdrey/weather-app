@@ -52,7 +52,7 @@ const WeekWeatherList = ({
           ))}
         </div>
       )}
-      <button onClick={showWeather}>more weather info</button>
+      <button onClick={showWeather}>More days & info</button>
     </div>
   );
 };

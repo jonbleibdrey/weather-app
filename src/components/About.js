@@ -12,13 +12,17 @@ const About = () => {
           <hr style={{ width: "52%", borderTop: "5px solid red" }} />
         </h2>
         <br />
-        If you allow location will find your location and get you started, this
-        is how they do it:
+        <h5>
+          If you allow location to find you it will give you your weather, plain
+          and simple.
+        </h5>
         <br />
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo
-        recusandae cum repellendus sapiente accusamus! Eius sit voluptas
-        voluptatem velit dolorum, quae perferendis consequatur quia temporibus
-        possimus? In voluptate veniam ratione!
+        <p>
+          <strong>this is how it works: </strong>  Lorem, ipsum dolor sit amet consectetur
+          adipisicing elit. Nemo recusandae cum repellendus sapiente accusamus!
+          Eius sit voluptas voluptatem velit dolorum, quae perferendis
+          consequatur quia temporibus possimus? In voluptate veniam ratione!
+        </p>
       </div>
       <div style={{ marginTop: "3%", marginLeft: "50%" }}>
         <SearchBar />
