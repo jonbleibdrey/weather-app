@@ -13,15 +13,16 @@ const About = () => {
         </h2>
         <br />
         <h5>
-          If you allow location to find you it will give you your weather, plain
-          and simple.
+          If you allow location to find you! It will give you your weather,
+          plain, and simple.
         </h5>
         <br />
         <p>
-          <strong>this is how it works: </strong>  Lorem, ipsum dolor sit amet consectetur
-          adipisicing elit. Nemo recusandae cum repellendus sapiente accusamus!
-          Eius sit voluptas voluptatem velit dolorum, quae perferendis
-          consequatur quia temporibus possimus? In voluptate veniam ratione!
+          <strong>this is how it works: </strong> Lorem, ipsum dolor sit amet
+          consectetur adipisicing elit. Nemo recusandae cum repellendus sapiente
+          accusamus! Eius sit voluptas voluptatem velit dolorum, quae
+          perferendis consequatur quia temporibus possimus? In voluptate veniam
+          ratione!
         </p>
       </div>
       <div style={{ marginTop: "3%", marginLeft: "50%" }}>

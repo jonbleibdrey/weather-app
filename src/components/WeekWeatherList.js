@@ -26,13 +26,17 @@ const WeekWeatherList = ({
                   Day: {dayConverter(day.dt)} <br />
                   Tempature: {farConverter(day.temp.day)}° ,
                   <br />
+                  Feels like: {farConverter(day.feels_like.day)}°
+                  <br />
+                  Humidity: {day.humidity}%
+                  <br />
                   Min tempature: {farConverter(day.temp.min)}° ,
                   <br />
                   Max tempature {farConverter(day.temp.max)}°,
                   <br />
-                  weather: {weatherIcon(day.weather[0].main)}
+                  Possible weather: {weatherIcon(day.weather[0].main)}
                   <br />
-                  details: {day.weather[0].description}
+                  Details: {day.weather[0].description}
                 </li>
               </ul>
             </div>
