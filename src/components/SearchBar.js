@@ -44,12 +44,15 @@ const SearchBar = () => {
         <div>
           <form onSubmit={handleSubmit}>
             <input
+              style={{}}
               type="text"
               value={search}
-              placeholder="search a  state"
+              placeholder="Search here"
               onChange={(e) => setSearch(e.target.value.toUpperCase())}
             />
-            <button type="submit">submit</button>
+            <button style={{}} type="submit">
+              Get Weather
+            </button>
           </form>
           {err === true ? "Put in a state" : " "}
 
