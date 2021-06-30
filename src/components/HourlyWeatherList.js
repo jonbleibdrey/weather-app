@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { v4 as mixId } from "uuid";
 
 const HourlyWeatherList = ({
@@ -8,6 +8,11 @@ const HourlyWeatherList = ({
   unixToTime,
   weatherIcon,
 }) => {
+  const [collapse, setCollapse] = useState(false);
+
+  const showWeather = () => {
+    setCollapse(!collapse);
+  };
   return (
     <div>
       <h1>Hourly Weather:</h1>
