@@ -143,7 +143,6 @@ const WeatherFetch = () => {
         <div className="parent">
           <header className="header">
             <About />
-            <SearchBar />
           </header>
           <div className="left">
             {weather && (
