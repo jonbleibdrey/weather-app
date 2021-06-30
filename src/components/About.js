@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 
-const About = () => {
+const About = ({ weatherIcon }) => {
   return (
     <div className="about-container">
       <Logo />
@@ -25,8 +25,8 @@ const About = () => {
           ratione!
         </p>
       </div>
-      <div style={{ marginTop: "3%", marginLeft: "50%" }}>
-        <SearchBar />
+      <div style={{ marginTop: "3%", marginLeft: "25%" }}>
+        <SearchBar weatherIcon={weatherIcon} />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SearchResult from "./SearchResult";
 require("dotenv").config();
 
-const SearchBar = () => {
+const SearchBar = ({ weatherIcon }) => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
@@ -26,14 +26,13 @@ const SearchBar = () => {
     setShowResults(!showResults);
   };
 
+  console.log("search", searchResult);
+
   return (
     <>
       <button
         style={{
-          border: "none",
-          fontSize: "1.7rem",
-          borderRadius: "20px",
-          boxShadow: "-5px 9px 20px -8px black",
+          
         }}
         onClick={searchBar}
       >
@@ -59,7 +58,10 @@ const SearchBar = () => {
           {searchResult.length === 0 ? (
             <div> </div>
           ) : (
-            <SearchResult searchResult={searchResult} />
+            <SearchResult
+              weatherIcon={weatherIcon}
+              searchResult={searchResult}
+            />
           )}
         </div>
       ) : (

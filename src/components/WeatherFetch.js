@@ -141,7 +141,7 @@ const WeatherFetch = () => {
       ) : (
         <div className="parent">
           <header className="header">
-            <About />
+            <About weatherIcon={weatherIcon} />
           </header>
           <div className="left">
             {weather && (
