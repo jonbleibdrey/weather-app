@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import SearchResult from "./SearchResult";
 require("dotenv").config();
 
-const SearchBar = ({ weatherIcon }) => {
+const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
-  const [showResults, setShowResults] = useState(false);
+
+ 
 
   function handleSubmit(evt) {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -22,35 +23,24 @@ const SearchBar = ({ weatherIcon }) => {
     setSearch("");
   }
 
-  const searchBar = () => {
-    setShowResults(!showResults);
-  };
 
   console.log("search", searchResult);
 
   return (
     <>
-      <button
-        style={{
-          border: "none",
-          borderRadius: "10px",
-          boxShadow: "-4px 4px 13px -6px black",
-          padding: "7px",
-        }}
-        onClick={searchBar}
-      >
-        ❤️Search a state❤️
-      </button>
       {showResults ? (
-        <div>
+        <div style={{backgroundColor:"grey", padding:"10px", marginTop:"20px",borderRadius: "10px",
+        boxShadow: "-4px 4px 10px -6px black", width:"55vw"}}>
+          <button style={{}} onClick={searchBar}>X</button>
           <form onSubmit={handleSubmit}>
             <input
               style={{
-                marginTop: "30px",
+                marginTop: "13px",
                 border: "none",
                 borderRadius: "10px",
-                boxShadow: "-4px 4px 10px -6px black",
+                boxShadow: "-2px 3px 20px -7px black",
                 fontSize: "40px",
+                marginLeft: "50px",
               }}
               type="text"
               value={search}
@@ -61,9 +51,11 @@ const SearchBar = ({ weatherIcon }) => {
               style={{
                 display: "block",
                 marginTop: "10px",
+                marginBottom: "10px",
+                marginLeft: "50px",
                 padding: "20px",
-                backgroundColor: "black",
-                color: "white",
+                backgroundColor: "white",
+                color: "black",
                 borderRadius: "20px 5px",
                 boxShadow: "-4px 4px 15px -6px black",
                 border: "none",

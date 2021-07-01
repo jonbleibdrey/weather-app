@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 
+
 const About = ({ weatherIcon }) => {
+  const [showResults, setShowResults] = useState(false);
+
+  const searchBar = () => {
+    setShowResults(!showResults);
+  };
+
   return (
     <div className="about-container">
-      <Logo />
+      <Logo searchBar={searchBar} />
       <div style={{ marginTop: "3%", marginLeft: "25%" }}>
         <h2>
           Welcome to LOOK-UP™ a site for weather
@@ -18,15 +25,15 @@ const About = ({ weatherIcon }) => {
         </h5>
         <br />
         <p>
-          <strong>this is how it works: </strong> Lorem, ipsum dolor sit amet
+          <strong>This is how it works: </strong> Lorem, ipsum dolor sit amet
           consectetur adipisicing elit. Nemo recusandae cum repellendus sapiente
           accusamus! Eius sit voluptas voluptatem velit dolorum, quae
           perferendis consequatur quia temporibus possimus? In voluptate veniam
           ratione!
         </p>
       </div>
-      <div style={{ marginTop: "3%", marginLeft: "25%" }}>
-        <SearchBar weatherIcon={weatherIcon} />
+      <div style={{ marginLeft: "25%" }}>
+        <SearchBar showResults={showResults} searchBar={searchBar} weatherIcon={weatherIcon} />
       </div>
     </div>
   );
