@@ -32,24 +32,44 @@ const SearchBar = ({ weatherIcon }) => {
     <>
       <button
         style={{
-          
+          border: "none",
+          borderRadius: "10px",
+          boxShadow: "-4px 4px 13px -6px black",
+          padding: "7px",
         }}
         onClick={searchBar}
       >
-        {" "}
-        ❤️Search a state❤️{" "}
+        ❤️Search a state❤️
       </button>
       {showResults ? (
         <div>
           <form onSubmit={handleSubmit}>
             <input
-              style={{}}
+              style={{
+                marginTop: "30px",
+                border: "none",
+                borderRadius: "10px",
+                boxShadow: "-4px 4px 10px -6px black",
+                fontSize: "40px",
+              }}
               type="text"
               value={search}
-              placeholder="Search here"
+              placeholder="State here..."
               onChange={(e) => setSearch(e.target.value.toUpperCase())}
             />
-            <button style={{}} type="submit">
+            <button
+              style={{
+                display: "block",
+                marginTop: "10px",
+                padding: "20px",
+                backgroundColor: "black",
+                color: "white",
+                borderRadius: "20px 5px",
+                boxShadow: "-4px 4px 15px -6px black",
+                border: "none",
+              }}
+              type="submit"
+            >
               Get Weather
             </button>
           </form>
