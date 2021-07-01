@@ -9,7 +9,9 @@ const WeatherLocationText = ({
   unixToTime,
 }) => {
   return (
-    <div>
+    <div style={{backgroundColor:"white", padding:"20px", borderRadius:'20px', marginTop: "13px",
+    boxShadow: "-2px 3px 20px -7px black",
+    marginLeft: "5px"}}>
       <h1>
         {" "}
         Howdy,

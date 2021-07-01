@@ -12,7 +12,18 @@ const LocalWeatherList = ({
   console.log("weather: ", weather);
 
   return (
-    <div className="contentList">
+    <div
+      className="contentList"
+      style={{
+        backgroundColor: "white",
+        padding: "20px",
+        borderRadius: "20px",
+        marginTop: "13px",
+        boxShadow: "-2px 3px 20px -7px black",
+        fontSize: "20px",
+        marginLeft: "5px",
+      }}
+    >
       <h1>Local Weather:</h1>
       <ul>
         <li>State: {statess}</li>

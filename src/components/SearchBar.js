@@ -28,7 +28,7 @@ const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
       {showResults ? (
         <div
           style={{
-            backgroundColor: "grey",
+            backgroundColor: "#CEE0DC",
             padding: "10px",
             marginTop: "20px",
             borderRadius: "10px",
@@ -67,7 +67,7 @@ const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
               style={{
                 display: "block",
                 marginTop: "10px",
-                marginBottom: "10px",
+                marginBottom: "25px",
                 marginLeft: "50px",
                 padding: "20px",
                 backgroundColor: "white",
