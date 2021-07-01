@@ -8,8 +8,6 @@ const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
 
- 
-
   function handleSubmit(evt) {
     const apiKey = process.env.REACT_APP_API_KEY;
     evt.preventDefault();
@@ -23,15 +21,33 @@ const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
     setSearch("");
   }
 
-
   console.log("search", searchResult);
 
   return (
     <>
       {showResults ? (
-        <div style={{backgroundColor:"grey", padding:"10px", marginTop:"20px",borderRadius: "10px",
-        boxShadow: "-4px 4px 10px -6px black", width:"55vw"}}>
-          <button style={{}} onClick={searchBar}>X</button>
+        <div
+          style={{
+            backgroundColor: "grey",
+            padding: "10px",
+            marginTop: "20px",
+            borderRadius: "10px",
+            boxShadow: "-4px 4px 10px -6px black",
+            width: "55vw",
+          }}
+        >
+          <button
+            style={{
+              border: "none",
+              borderRadius: "10px",
+              boxShadow: "-4px 4px 10px -6px black",
+              backgroundColor: "pink",
+              color: "white",
+            }}
+            onClick={searchBar}
+          >
+            X
+          </button>
           <form onSubmit={handleSubmit}>
             <input
               style={{
@@ -44,7 +60,7 @@ const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
               }}
               type="text"
               value={search}
-              placeholder="State here..."
+              placeholder="State please!"
               onChange={(e) => setSearch(e.target.value.toUpperCase())}
             />
             <button

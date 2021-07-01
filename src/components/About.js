@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
-
 
 const About = ({ weatherIcon }) => {
   const [showResults, setShowResults] = useState(false);
@@ -33,7 +32,11 @@ const About = ({ weatherIcon }) => {
         </p>
       </div>
       <div style={{ marginLeft: "25%" }}>
-        <SearchBar showResults={showResults} searchBar={searchBar} weatherIcon={weatherIcon} />
+        <SearchBar
+          showResults={showResults}
+          searchBar={searchBar}
+          weatherIcon={weatherIcon}
+        />
       </div>
     </div>
   );
