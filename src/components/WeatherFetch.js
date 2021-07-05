@@ -192,9 +192,9 @@ const WeatherFetch = () => {
           <footer className="footer">
             <Footer />
             <h5 style={{marginTop:"10px"}}>Copyright© LOOK-UP, Inc.</h5>
-            <a style={{color:"black"}} href="https://www.legal.com/">Legal Stuff</a>
+            <a style={{color:"black"}} href="https://www.legal.com/">Legal-Stuff</a>
              |
-            <a style={{color:"black"}} href="privacypolicies.com"> Privacy Policy</a>
+            <a style={{color:"black"}} href="privacypolicies.com"> Privacy-Policy</a>
           </footer>
         </div>
       )}
