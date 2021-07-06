@@ -1,9 +1,9 @@
-.header-logo {
+.landingPage-logo {
   display: grid;
   justify-content: center;
   position: relative;
 }
-.headerH1 {
+.LandingH1 {
   margin-left: 1vw;
   position: absolute;
   top: 45%;

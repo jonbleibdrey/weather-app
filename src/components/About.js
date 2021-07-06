@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import axios from "axios";
+
 require("dotenv").config();
 
-const About = ({ weatherIcon }) => {
+const About = ({ weatherIcon, popUp }) => {
   const [toggleSearch, setToggleSearch] = useState(false);
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -54,6 +55,27 @@ const About = ({ weatherIcon }) => {
           ratione!
         </p>
       </div>
+      {popUp ? (
+        <div
+          style={{
+            marginTop: "50px",
+            border: "none",
+            borderRadius: "10px",
+            boxShadow: "-2px 3px 20px -7px black",
+            fontSize: "30px",
+            marginLeft: "2px",
+            padding: "10px",
+            backgroundColor: "whitesmoke",
+            width: "14vw",
+            opacity: "0.7",
+          }}
+        >
+          {popUp}
+        </div>
+      ) : (
+        <div></div>
+      )}
+
       <div style={{ marginLeft: "25%" }}>
         <SearchBar
           toggleSearch={toggleSearch}

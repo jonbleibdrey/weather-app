@@ -6,7 +6,7 @@ import WeekWeatherList from "./WeekWeatherList";
 import WeatherLocationText from "./WeatherLocationText";
 import Footer from "./Footer";
 import Loading from "./Loading";
-import Header from "./Header";
+import LandingPage from "./LandingPage";
 import About from "./About";
 import { TiWeatherCloudy } from "react-icons/ti";
 import { TiWeatherSunny } from "react-icons/ti";
@@ -25,6 +25,7 @@ const WeatherFetch = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
+  const [popUp, setPopUp] = useState(null)
 
   require("dotenv").config();
 
@@ -35,6 +36,15 @@ const WeatherFetch = () => {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     }
   }, []);
+
+  useEffect(() => {
+    setTimeout(()=>{
+     setPopUp("Click on me ⤴️ ")
+     }, 5000)
+     setTimeout(()=>{
+      setPopUp("")
+     },9000)
+  }, [])
 
   useEffect(() => {
     lat && long && getWeather();
@@ -134,14 +144,14 @@ const WeatherFetch = () => {
     <>
       {isLoading ? (
         <div>
-          <Header />
+          <LandingPage />
           <br />
           <Loading isLoading={isLoading} />
         </div>
       ) : (
         <div className="parent">
           <header className="header">
-            <About weatherIcon={weatherIcon} />
+            <About weatherIcon={weatherIcon} popUp={popUp} />
           </header>
           <div className="left">
             {weather && (
