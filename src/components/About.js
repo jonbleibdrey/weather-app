@@ -65,9 +65,9 @@ const About = ({ weatherIcon, popUp }) => {
             fontSize: "30px",
             marginLeft: "2px",
             padding: "10px",
-            backgroundColor: "whitesmoke",
+            background: "rgba(238, 209, 185, 0.4)",
             width: "14vw",
-            opacity: "0.7",
+            
           }}
         >
           {popUp}
