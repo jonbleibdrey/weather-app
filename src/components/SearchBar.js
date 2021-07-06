@@ -1,31 +1,20 @@
-import axios from "axios";
-import React, { useState } from "react";
+import React from "react";
 import SearchResult from "./SearchResult";
-require("dotenv").config();
 
-const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
-  const [search, setSearch] = useState("");
-  const [searchResult, setSearchResult] = useState([]);
-  const [err, setErr] = useState(false);
 
-  function handleSubmit(evt) {
-    const apiKey = process.env.REACT_APP_API_KEY;
-    evt.preventDefault();
-    axios
-      .get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=imperial`
-      )
-      .then((res) => setSearchResult(res.data), setErr(false))
+const SearchBar = ({ weatherIcon, toggleSearch, showSearchBar, setSearchResult, searchResult, handleSubmit, search, err, setSearch }) => {
+  
+  const clear = () => {
+    showSearchBar()
+    setSearchResult("")
 
-      .catch((error) => setErr(true));
-    setSearch("");
   }
 
   console.log("search", searchResult);
 
   return (
     <>
-      {showResults ? (
+      {toggleSearch ? (
         <div
           style={{
             backgroundColor: "#CEE0DC",
@@ -44,7 +33,7 @@ const SearchBar = ({ weatherIcon, showResults, searchBar }) => {
               backgroundColor: "pink",
               color: "white",
             }}
-            onClick={searchBar}
+            onClick={clear}
           >
             X
           </button>

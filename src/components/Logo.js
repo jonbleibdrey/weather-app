@@ -1,7 +1,11 @@
 import React from "react";
 import "../css/Logo.css";
 
-const Logo = ({ searchBar }) => {
+const Logo = ({ showSearchBar, clear}) => {
+
+
+
+
   return (
     <div className="about-container">
       <img
@@ -16,12 +20,12 @@ const Logo = ({ searchBar }) => {
           boxShadow: "-5px 9px 20px -8px black",
           cursor: "pointer",
         }}
-        onClick={searchBar}
+        onClick={clear}
       />
       <div
         className="aboutH1"
         style={{ cursor: "pointer" }}
-        onClick={searchBar}
+        onClick={clear}
       >
         LOOK-UP™
       </div>

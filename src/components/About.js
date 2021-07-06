@@ -1,17 +1,42 @@
 import React, { useState } from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
+import axios from "axios";
+require("dotenv").config();
 
 const About = ({ weatherIcon }) => {
-  const [showResults, setShowResults] = useState(false);
+  const [toggleSearch, setToggleSearch] = useState(false);
+  const [search, setSearch] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+  const [err, setErr] = useState(false);
 
-  const searchBar = () => {
-    setShowResults(!showResults);
+
+  function handleSubmit(evt) {
+    const apiKey = process.env.REACT_APP_API_KEY;
+    evt.preventDefault();
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=imperial`
+      )
+      .then((res) => setSearchResult(res.data), setErr(false))
+
+      .catch((error) => setErr(true));
+    setSearch("");
+  }
+
+  const showSearchBar = () => {
+    setToggleSearch(!toggleSearch);
   };
+
+  const clear = () => {
+    showSearchBar()
+    setSearchResult("")
+
+  }
 
   return (
     <div className="about-container">
-      <Logo searchBar={searchBar} />
+      <Logo showSearchBar={showSearchBar} clear={clear} />
       <div style={{ marginTop: "3%", marginLeft: "25%" }}>
         <h2>
           Welcome to LOOK-UP™ a site for weather
@@ -33,9 +58,15 @@ const About = ({ weatherIcon }) => {
       </div>
       <div style={{ marginLeft: "25%" }}>
         <SearchBar
-          showResults={showResults}
-          searchBar={searchBar}
+          toggleSearch={toggleSearch}
+          showSearchBar={showSearchBar}
           weatherIcon={weatherIcon}
+          setSearchResult={setSearchResult}
+          searchResult={searchResult}
+          handleSubmit={handleSubmit}
+          search={search}
+          setSearch={setSearch}
+          err={err}
         />
       </div>
     </div>
