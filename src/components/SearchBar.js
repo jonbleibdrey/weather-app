@@ -1,15 +1,16 @@
 import React from "react";
 import SearchResult from "./SearchResult";
 
-
-const SearchBar = ({ weatherIcon, toggleSearch, showSearchBar, setSearchResult, searchResult, handleSubmit, search, err, setSearch }) => {
-  
-  const clear = () => {
-    showSearchBar()
-    setSearchResult("")
-
-  }
-
+const SearchBar = ({
+  weatherIcon,
+  toggleSearch,
+  searchResult,
+  handleSubmit,
+  search,
+  err,
+  setSearch,
+  clear,
+}) => {
   console.log("search", searchResult);
 
   return (

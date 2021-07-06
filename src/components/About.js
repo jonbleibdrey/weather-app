@@ -10,7 +10,6 @@ const About = ({ weatherIcon }) => {
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
 
-
   function handleSubmit(evt) {
     const apiKey = process.env.REACT_APP_API_KEY;
     evt.preventDefault();
@@ -29,10 +28,9 @@ const About = ({ weatherIcon }) => {
   };
 
   const clear = () => {
-    showSearchBar()
-    setSearchResult("")
-
-  }
+    showSearchBar();
+    setSearchResult("");
+  };
 
   return (
     <div className="about-container">
@@ -59,14 +57,13 @@ const About = ({ weatherIcon }) => {
       <div style={{ marginLeft: "25%" }}>
         <SearchBar
           toggleSearch={toggleSearch}
-          showSearchBar={showSearchBar}
           weatherIcon={weatherIcon}
-          setSearchResult={setSearchResult}
           searchResult={searchResult}
           handleSubmit={handleSubmit}
           search={search}
           setSearch={setSearch}
           err={err}
+          clear={clear}
         />
       </div>
     </div>
