@@ -8,17 +8,17 @@ const Footer = () => {
   return (
     <div className="container">
       <h1>
-        <a style={{color:"black"}} href="https://www.facebook.com">
+        <a style={{color:"black"}}  target="_blank" rel="noreferrer"  href="https://www.facebook.com">
           <AiFillFacebook />
         </a>
       </h1>
       <h1>
-        <a style={{color:"black"}} href="https://www.twitter.com">
+        <a style={{color:"black"}}  target="_blank" rel="noreferrer"  href="https://www.twitter.com">
           <AiFillTwitterCircle />
         </a>
       </h1>
       <h1>
-        <a style={{color:"black"}} href="https://www.instagram.com">
+        <a style={{color:"black"}}  target="_blank" rel="noreferrer"  href="https://www.instagram.com">
           <AiFillInstagram />
         </a>
       </h1>
