@@ -15,6 +15,7 @@ import { TiWeatherDownpour } from "react-icons/ti";
 import { TiWeatherShower } from "react-icons/ti";
 import { TiWeatherStormy } from "react-icons/ti";
 import "../css/weatherFetch.css";
+import Selector from "./Selector";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -152,6 +153,7 @@ const WeatherFetch = () => {
         <div className="parent">
           <header className="header">
             <About weatherIcon={weatherIcon} popUp={popUp} />
+            <Selector/>
           </header>
           <div className="left">
             {weather && (
