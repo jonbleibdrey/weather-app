@@ -1,5 +1,7 @@
 import React from "react";
 import SearchResult from "./SearchResult";
+import Selector from "./Selector";
+
 
 const SearchBar = ({
   weatherIcon,
@@ -10,6 +12,7 @@ const SearchBar = ({
   err,
   setSearch,
   clear,
+  states
 }) => {
   console.log("search", searchResult);
 
@@ -35,9 +38,11 @@ const SearchBar = ({
               color: "white",
             }}
             onClick={clear}
-          >
+            >
             X
           </button>
+         
+            <Selector states={states}/>
           <form onSubmit={handleSubmit}>
             <input
               style={{
@@ -52,7 +57,7 @@ const SearchBar = ({
               value={search}
               placeholder="State please!"
               onChange={(e) => setSearch(e.target.value.toUpperCase())}
-            />
+              />
             <button
               style={{
                 display: "block",
@@ -67,7 +72,7 @@ const SearchBar = ({
                 border: "none",
               }}
               type="submit"
-            >
+              >
               Get Weather
             </button>
           </form>
