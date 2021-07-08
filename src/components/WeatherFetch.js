@@ -53,7 +53,7 @@ const WeatherFetch = () => {
       const apiKey = process.env.REACT_APP_API_KEY;
       axios
         .get(
-          `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
         )
         .then((res) => setWeather(res.data), setIsLoading(false))
 
@@ -70,7 +70,7 @@ const WeatherFetch = () => {
 
     axios
       .get(
-        `https://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
+        `http://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
       )
       .then((res) => {
         setStatess(res.data.data[0].region);
