@@ -26,6 +26,7 @@ const WeatherFetch = () => {
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
   const [popUp, setPopUp] = useState(null);
+  const [map, setMap] = useState(null)
 
   require("dotenv").config();
 
@@ -77,11 +78,13 @@ const WeatherFetch = () => {
         setZipCode(res.data.data[0].postal_code);
         setTown(res.data.data[0].locality);
         setCountry(res.data.data[0].country);
+        setMap(res.data.data[0].map_url)
       })
-
+      
       .catch((error) => console.log(`Error message: ${error.message} `));
-  }
-
+    }
+   
+    
   function errorCallback(error) {
     throw Error("Our server is down!");
   }
@@ -173,6 +176,7 @@ const WeatherFetch = () => {
                 celConverter={celConverter}
                 windConverter={windConverter}
                 weatherIcon={weatherIcon}
+                map={map}
               />
             )}
           </div>

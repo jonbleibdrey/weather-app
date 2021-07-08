@@ -8,6 +8,7 @@ const LocalWeatherList = ({
   windConverter,
   celConverter,
   weatherIcon,
+  map,
 }) => {
   return (
     <div
@@ -24,6 +25,9 @@ const LocalWeatherList = ({
     >
       <h1>Local Weather:</h1>
       <ul>
+        <li>
+          <a href={map}  target="_blank" rel="noreferrer" style={{color:"black", border:"none", textDecoration:"none"}}>Map link here</a>
+        </li>
         <li>State: {statess}</li>
         <li>
           Tempature: {farConverter(weather.current.temp)}°/{" "}
