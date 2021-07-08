@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import axios from "axios";
-
 
 require("dotenv").config();
 
@@ -11,7 +10,6 @@ const About = ({ weatherIcon, popUp }) => {
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
-  const [states, setStates] = useState([]);
 
   function handleSubmit(evt) {
     const apiKey = process.env.REACT_APP_API_KEY;
@@ -25,24 +23,6 @@ const About = ({ weatherIcon, popUp }) => {
       .catch((error) => setErr(true));
     setSearch("");
   }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const sort = (data) => {
-    const sorting = data.filter( state => state.country === "US" && state.state === "TX")
-    console.log("sorting:",sorting)
-    setStates(sorting)
-  }
-
-  const getData = () => {
-    fetch("data.json")
-      .then((response) => response.json())
-      .then(
-        (data) => {sort(data)}
-      );
-  };
 
   const showSearchBar = () => {
     setToggleSearch(!toggleSearch);
@@ -87,7 +67,6 @@ const About = ({ weatherIcon, popUp }) => {
             padding: "10px",
             background: "rgba(238, 209, 185, 0.4)",
             width: "14vw",
-            
           }}
         >
           {popUp}
@@ -106,7 +85,6 @@ const About = ({ weatherIcon, popUp }) => {
           setSearch={setSearch}
           err={err}
           clear={clear}
-          states={states}
         />
       </div>
     </div>

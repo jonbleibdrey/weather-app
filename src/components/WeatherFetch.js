@@ -16,7 +16,6 @@ import { TiWeatherShower } from "react-icons/ti";
 import { TiWeatherStormy } from "react-icons/ti";
 import "../css/weatherFetch.css";
 
-
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
   const [statess, setStatess] = useState();
@@ -26,7 +25,7 @@ const WeatherFetch = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
-  const [popUp, setPopUp] = useState(null)
+  const [popUp, setPopUp] = useState(null);
 
   require("dotenv").config();
 
@@ -39,13 +38,13 @@ const WeatherFetch = () => {
   }, []);
 
   useEffect(() => {
-    setTimeout(()=>{
-     setPopUp("Click on me ⤴️ ")
-     }, 5000)
-     setTimeout(()=>{
-      setPopUp("")
-     },9000)
-  }, [])
+    setTimeout(() => {
+      setPopUp("Click on me ⤴️ ");
+    }, 4000);
+    setTimeout(() => {
+      setPopUp("");
+    }, 6000);
+  }, []);
 
   useEffect(() => {
     lat && long && getWeather();
@@ -74,7 +73,6 @@ const WeatherFetch = () => {
         `http://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
       )
       .then((res) => {
-        console.log("response: ", res);
         setStatess(res.data.data[0].region);
         setZipCode(res.data.data[0].postal_code);
         setTown(res.data.data[0].locality);
@@ -153,7 +151,6 @@ const WeatherFetch = () => {
         <div className="parent">
           <header className="header">
             <About weatherIcon={weatherIcon} popUp={popUp} />
-            
           </header>
           <div className="left">
             {weather && (
@@ -203,10 +200,25 @@ const WeatherFetch = () => {
           </div>
           <footer className="footer">
             <Footer />
-            <h5 style={{marginTop:"10px"}}>Copyright© LOOK-UP, Inc.</h5>
-            <a style={{color:"black"}} target="_blank" rel="noreferrer" href="https://www.legal.com/">Legal-Stuff</a>
-             |
-            <a style={{color:"black"}} target="_blank" rel="noreferrer" href="privacypolicies.com"> Privacy-Policy</a>
+            <h5 style={{ marginTop: "10px" }}>Copyright© LOOK-UP, Inc.</h5>
+            <a
+              style={{ color: "black" }}
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.legal.com/"
+            >
+              Legal-Stuff
+            </a>
+            |
+            <a
+              style={{ color: "black" }}
+              target="_blank"
+              rel="noreferrer"
+              href="privacypolicies.com"
+            >
+              {" "}
+              Privacy-Policy
+            </a>
           </footer>
         </div>
       )}

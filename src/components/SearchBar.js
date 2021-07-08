@@ -1,7 +1,5 @@
 import React from "react";
 import SearchResult from "./SearchResult";
-import Selector from "./Selector";
-
 
 const SearchBar = ({
   weatherIcon,
@@ -12,10 +10,7 @@ const SearchBar = ({
   err,
   setSearch,
   clear,
-  states
 }) => {
-  console.log("search", searchResult);
-
   return (
     <>
       {toggleSearch ? (
@@ -38,11 +33,9 @@ const SearchBar = ({
               color: "white",
             }}
             onClick={clear}
-            >
+          >
             X
           </button>
-         
-            <Selector states={states}/>
           <form onSubmit={handleSubmit}>
             <input
               style={{
@@ -57,7 +50,7 @@ const SearchBar = ({
               value={search}
               placeholder="State please!"
               onChange={(e) => setSearch(e.target.value.toUpperCase())}
-              />
+            />
             <button
               style={{
                 display: "block",
@@ -72,9 +65,13 @@ const SearchBar = ({
                 border: "none",
               }}
               type="submit"
-              >
+            >
               Get Weather
             </button>
+            <strong>
+              *There was to much data to parse for me to do each and every
+              county. So for now its only States*
+            </strong>
           </form>
           {err === true ? "Put in a state" : " "}
 

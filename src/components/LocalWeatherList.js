@@ -9,8 +9,6 @@ const LocalWeatherList = ({
   celConverter,
   weatherIcon,
 }) => {
-  console.log("weather: ", weather);
-
   return (
     <div
       className="contentList"
