@@ -8,12 +8,7 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import LandingPage from "./LandingPage";
 import About from "./About";
-import { TiWeatherCloudy } from "react-icons/ti";
-import { TiWeatherSunny } from "react-icons/ti";
-import { TiWeatherSnow } from "react-icons/ti";
-import { TiWeatherDownpour } from "react-icons/ti";
-import { TiWeatherShower } from "react-icons/ti";
-import { TiWeatherStormy } from "react-icons/ti";
+import ReactAnimatedWeather from 'react-animated-weather';
 import "../css/weatherFetch.css";
 
 const WeatherFetch = () => {
@@ -124,21 +119,73 @@ const WeatherFetch = () => {
   }
 
   const weatherIcon = (info) => {
+    const clear = {
+      icon: 'CLEAR_DAY',
+      color: 'goldenrod',
+      size: 20,
+      animate: true
+    };
+    const cloud = {
+      icon: 'CLOUDY',
+      color: 'goldenrod',
+      size: 20,
+      animate: true
+    };
+    const snow = {
+      icon: 'SNOW',
+      color: 'goldenrod',
+      size: 20,
+      animate: true
+    };
+    const rain = {
+      icon: 'RAIN',
+      color: 'goldenrod',
+      size: 20,
+      animate: true
+    };
+    const thunder = {
+      icon: 'SLEET',
+      color: 'goldenrod',
+      size: 20,
+      animate: true
+    };
+
     switch (info) {
       case "Clouds":
-        return <TiWeatherCloudy />;
+        return <ReactAnimatedWeather icon={cloud.icon}
+        color={cloud.color}
+        size={cloud.size}
+        animate={cloud.animate}/>;
       case "Clear":
-        return <TiWeatherSunny />;
+        return <ReactAnimatedWeather icon={clear.icon}
+        color={clear.color}
+        size={clear.size}
+        animate={clear.animate}/>;
       case "Snow":
-        return <TiWeatherSnow />;
+        return <ReactAnimatedWeather icon={snow.icon}
+        color={snow.color}
+        size={snow.size}
+        animate={snow.animate}/>;
       case "Drizzle":
-        return <TiWeatherShower />;
+        return <ReactAnimatedWeather icon={rain.icon}
+        color={rain.color}
+        size={rain.size}
+        animate={rain.animate}/>;
       case "Thunderstorm":
-        return <TiWeatherStormy />;
+        return <ReactAnimatedWeather icon={thunder.icon}
+        color={thunder.color}
+        size={thunder.size}
+        animate={thunder.animate}/>;
       case "Rain":
-        return <TiWeatherDownpour />;
+        return <ReactAnimatedWeather icon={rain.icon}
+        color={rain.color}
+        size={rain.size}
+        animate={rain.animate}/>;
       default:
-        return <TiWeatherSunny />;
+        return <ReactAnimatedWeather icon={clear.icon}
+        color={clear.color}
+        size={clear.size}
+        animate={clear.animate}/>;
     }
   };
 
