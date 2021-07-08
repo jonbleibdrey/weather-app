@@ -66,7 +66,15 @@ const WeekWeatherList = ({
           ))}
         </div>
       )}
-      <button onClick={showWeather}>More days & info</button>
+      <button onClick={showWeather} style={{
+          Margin: "20px",
+          Padding: "2px",
+          Color: "blue",
+          FontSize: "2.4px",
+          borderRadius: "20px",
+          border:'none',
+          boxShadow:"-5px 4px 20px -8px black"
+        }}>More days & info</button>
     </div>
   );
 };

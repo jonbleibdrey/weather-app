@@ -67,7 +67,21 @@ const HourlyWeatherList = ({
           ))}
         </div>
       )}
-      <button onClick={showWeather}> More time & info</button>
+      <button
+        onClick={showWeather}
+        style={{
+          Margin: "20px",
+          Padding: "2px 4px",
+          Color: "blue",
+          FontSize: "2.4px",
+          borderRadius: "20px",
+          border:'none',
+          boxShadow:"-5px 4px 20px -8px black"
+        }}
+      >
+        {" "}
+        More time & info
+      </button>
     </div>
   );
 };
