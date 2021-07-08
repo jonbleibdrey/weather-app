@@ -70,7 +70,7 @@ const WeatherFetch = () => {
 
     axios
       .get(
-        `http://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
+        `https://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
       )
       .then((res) => {
         setStatess(res.data.data[0].region);

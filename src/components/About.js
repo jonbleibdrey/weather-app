@@ -33,6 +33,8 @@ const About = ({ weatherIcon, popUp }) => {
     setSearchResult("");
   };
 
+  console.log("search result: ",searchResult)
+
   return (
     <div className="about-container">
       <Logo showSearchBar={showSearchBar} clear={clear} />
