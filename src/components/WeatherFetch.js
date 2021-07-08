@@ -53,7 +53,7 @@ const WeatherFetch = () => {
       const apiKey = process.env.REACT_APP_API_KEY;
       axios
         .get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
+          `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
         )
         .then((res) => setWeather(res.data), setIsLoading(false))
 
