@@ -22,6 +22,7 @@ const Footer = () => {
           <AiFillInstagram />
         </a>
       </h1>
+      
     </div>
   );
 };

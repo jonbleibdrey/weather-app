@@ -16,12 +16,12 @@
     grid-column: 1 / 2;
   }
 
-  .main-content{
+  .left-middle{
     padding: 2rem;
     background: coral;
     grid-column: 2 / 3;
   }
-  .main-middle {
+  .right-middle {
     padding: 2rem;
     background: palegreen;
     grid-column: 3 / 4;

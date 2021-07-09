@@ -8,8 +8,9 @@ import Footer from "./Footer";
 import Loading from "./Loading";
 import LandingPage from "./LandingPage";
 import About from "./About";
-import ReactAnimatedWeather from 'react-animated-weather';
+import ReactAnimatedWeather from "react-animated-weather";
 import "../css/weatherFetch.css";
+import CopyRight from "./CopyRight";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -21,7 +22,7 @@ const WeatherFetch = () => {
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
   const [popUp, setPopUp] = useState(null);
-  const [map, setMap] = useState(null)
+  const [map, setMap] = useState(null);
 
   require("dotenv").config();
 
@@ -73,13 +74,12 @@ const WeatherFetch = () => {
         setZipCode(res.data.data[0].postal_code);
         setTown(res.data.data[0].locality);
         setCountry(res.data.data[0].country);
-        setMap(res.data.data[0].map_url)
+        setMap(res.data.data[0].map_url);
       })
-      
+
       .catch((error) => console.log(`Error message: ${error.message} `));
-    }
-   
-    
+  }
+
   function errorCallback(error) {
     throw Error("Our server is down!");
   }
@@ -118,74 +118,102 @@ const WeatherFetch = () => {
     }
   }
 
-  const weatherIcon = (info) => {
+  const weatherIcon = (data) => {
     const clear = {
-      icon: 'CLEAR_DAY',
-      color: 'goldenrod',
+      icon: "CLEAR_DAY",
+      color: "goldenrod",
       size: 20,
-      animate: true
+      animate: true,
     };
     const cloud = {
-      icon: 'CLOUDY',
-      color: 'goldenrod',
+      icon: "CLOUDY",
+      color: "goldenrod",
       size: 20,
-      animate: true
+      animate: true,
     };
     const snow = {
-      icon: 'SNOW',
-      color: 'goldenrod',
+      icon: "SNOW",
+      color: "goldenrod",
       size: 20,
-      animate: true
+      animate: true,
     };
     const rain = {
-      icon: 'RAIN',
-      color: 'goldenrod',
+      icon: "RAIN",
+      color: "goldenrod",
       size: 20,
-      animate: true
+      animate: true,
     };
     const thunder = {
-      icon: 'SLEET',
-      color: 'goldenrod',
+      icon: "SLEET",
+      color: "goldenrod",
       size: 20,
-      animate: true
+      animate: true,
     };
 
-    switch (info) {
+    switch (data) {
       case "Clouds":
-        return <ReactAnimatedWeather icon={cloud.icon}
-        color={cloud.color}
-        size={cloud.size}
-        animate={cloud.animate}/>;
+        return (
+          <ReactAnimatedWeather
+            icon={cloud.icon}
+            color={cloud.color}
+            size={cloud.size}
+            animate={cloud.animate}
+          />
+        );
       case "Clear":
-        return <ReactAnimatedWeather icon={clear.icon}
-        color={clear.color}
-        size={clear.size}
-        animate={clear.animate}/>;
+        return (
+          <ReactAnimatedWeather
+            icon={clear.icon}
+            color={clear.color}
+            size={clear.size}
+            animate={clear.animate}
+          />
+        );
       case "Snow":
-        return <ReactAnimatedWeather icon={snow.icon}
-        color={snow.color}
-        size={snow.size}
-        animate={snow.animate}/>;
+        return (
+          <ReactAnimatedWeather
+            icon={snow.icon}
+            color={snow.color}
+            size={snow.size}
+            animate={snow.animate}
+          />
+        );
       case "Drizzle":
-        return <ReactAnimatedWeather icon={rain.icon}
-        color={rain.color}
-        size={rain.size}
-        animate={rain.animate}/>;
+        return (
+          <ReactAnimatedWeather
+            icon={rain.icon}
+            color={rain.color}
+            size={rain.size}
+            animate={rain.animate}
+          />
+        );
       case "Thunderstorm":
-        return <ReactAnimatedWeather icon={thunder.icon}
-        color={thunder.color}
-        size={thunder.size}
-        animate={thunder.animate}/>;
+        return (
+          <ReactAnimatedWeather
+            icon={thunder.icon}
+            color={thunder.color}
+            size={thunder.size}
+            animate={thunder.animate}
+          />
+        );
       case "Rain":
-        return <ReactAnimatedWeather icon={rain.icon}
-        color={rain.color}
-        size={rain.size}
-        animate={rain.animate}/>;
+        return (
+          <ReactAnimatedWeather
+            icon={rain.icon}
+            color={rain.color}
+            size={rain.size}
+            animate={rain.animate}
+          />
+        );
       default:
-        return <ReactAnimatedWeather icon={clear.icon}
-        color={clear.color}
-        size={clear.size}
-        animate={clear.animate}/>;
+        return (
+          <ReactAnimatedWeather
+            icon={clear.icon}
+            color={clear.color}
+            size={clear.size}
+            animate={clear.animate}
+          />
+        );
     }
   };
 
@@ -214,7 +242,7 @@ const WeatherFetch = () => {
               />
             )}
           </div>
-          <div className="main-content">
+          <div className="left-middle">
             {weather && (
               <LocalWeatherList
                 statess={statess}
@@ -227,7 +255,7 @@ const WeatherFetch = () => {
               />
             )}
           </div>
-          <div className="main-middle">
+          <div className="right-middle">
             {weather && (
               <HourlyWeatherList
                 weather={weather}
@@ -251,25 +279,7 @@ const WeatherFetch = () => {
           </div>
           <footer className="footer">
             <Footer />
-            <h5 style={{ marginTop: "10px" }}>Copyright© LOOK-UP, Inc.</h5>
-            <a
-              style={{ color: "black" }}
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.legal.com/"
-            >
-              Legal-Stuff
-            </a>
-            |
-            <a
-              style={{ color: "black" }}
-              target="_blank"
-              rel="noreferrer"
-              href="privacypolicies.com"
-            >
-              {" "}
-              Privacy-Policy
-            </a>
+            <CopyRight />
           </footer>
         </div>
       )}
