@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import LandingPage from "./LandingPage";
+import Loading from "./Loading";
+import About from "./About";
+import WeatherLocationText from "./WeatherLocationText";
+import WeatherIcon from "./WeatherIcon";
 import LocalWeatherList from "./LocalWeatherList";
 import HourlyWeatherList from "./HourlyWeatherList";
 import WeekWeatherList from "./WeekWeatherList";
-import WeatherLocationText from "./WeatherLocationText";
 import Footer from "./Footer";
-import Loading from "./Loading";
-import LandingPage from "./LandingPage";
-import About from "./About";
-import ReactAnimatedWeather from "react-animated-weather";
-import "../css/weatherFetch.css";
 import CopyRight from "./CopyRight";
+import axios from "axios";
+import "../css/weatherFetch.css";
 
 const WeatherFetch = () => {
   const [weather, setWeather] = useState(null);
@@ -23,51 +23,39 @@ const WeatherFetch = () => {
   const [long, setLong] = useState(null);
   const [popUp, setPopUp] = useState(null);
   const [map, setMap] = useState(null);
-
   require("dotenv").config();
 
+  
   useEffect(() => {
+    //get location
     showPosition();
-
     function showPosition() {
       navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     }
-  }, []);
-
-  useEffect(() => {
+    //popup feature
     setTimeout(() => {
       setPopUp("Click on me ⤴️ ");
-    }, 4000);
+    }, 5000);
     setTimeout(() => {
       setPopUp("");
-    }, 6000);
+    }, 7000);
   }, []);
-
-  useEffect(() => {
-    lat && long && getWeather();
-
-    function getWeather() {
-      const apiKey = process.env.REACT_APP_API_KEY;
-      axios
-        .get(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
-        )
-        .then((res) => setWeather(res.data), setIsLoading(false))
-
-        .catch((error) => console.log("we in error world", error));
-    }
-  }, [lat, long]);
-
+  
+  //show position error function
+  function errorCallback(error) {
+    throw Error("Our server is down!");
+  }
+  //show position success function
   function successCallback(position) {
     const long = position.coords.longitude;
     const lat = position.coords.latitude;
     const key = process.env.REACT_APP_LOC_API_KEY;
     setLat(lat);
     setLong(long);
-
+    
     axios
-      .get(
-        `https://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
+    .get(
+      `https://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
       )
       .then((res) => {
         setStatess(res.data.data[0].region);
@@ -76,20 +64,32 @@ const WeatherFetch = () => {
         setCountry(res.data.data[0].country);
         setMap(res.data.data[0].map_url);
       })
-
+      
       .catch((error) => console.log(`Error message: ${error.message} `));
-  }
+    }
 
-  function errorCallback(error) {
-    throw Error("Our server is down!");
-  }
-
-  function farConverter(temp) {
-    const celsius = temp - 273;
-    const fahrenheit = Math.floor(celsius * (9 / 5) + 32);
-    return fahrenheit;
-  }
-  function celConverter(temp) {
+    useEffect(() => {
+      //get weather once you have location info
+      lat && long && getWeather();
+  
+      function getWeather() {
+        const apiKey = process.env.REACT_APP_API_KEY;
+        axios
+          .get(
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
+          )
+          .then((res) => setWeather(res.data), setIsLoading(false))
+  
+          .catch((error) => console.log("we in error world", error));
+      }
+    }, [lat, long]);
+    
+    function farConverter(temp) {
+      const celsius = temp - 273;
+      const fahrenheit = Math.floor(celsius * (9 / 5) + 32);
+      return fahrenheit;
+    }
+    function celConverter(temp) {
     const celsius = temp - 273;
     return Math.floor(celsius);
   }
@@ -117,104 +117,10 @@ const WeatherFetch = () => {
       return finalTime + ampm;
     }
   }
+ 
 
   const weatherIcon = (data) => {
-    const clear = {
-      icon: "CLEAR_DAY",
-      color: "goldenrod",
-      size: 20,
-      animate: true,
-    };
-    const cloud = {
-      icon: "CLOUDY",
-      color: "goldenrod",
-      size: 20,
-      animate: true,
-    };
-    const snow = {
-      icon: "SNOW",
-      color: "goldenrod",
-      size: 20,
-      animate: true,
-    };
-    const rain = {
-      icon: "RAIN",
-      color: "goldenrod",
-      size: 20,
-      animate: true,
-    };
-    const thunder = {
-      icon: "SLEET",
-      color: "goldenrod",
-      size: 20,
-      animate: true,
-    };
-
-    switch (data) {
-      case "Clouds":
-        return (
-          <ReactAnimatedWeather
-            icon={cloud.icon}
-            color={cloud.color}
-            size={cloud.size}
-            animate={cloud.animate}
-          />
-        );
-      case "Clear":
-        return (
-          <ReactAnimatedWeather
-            icon={clear.icon}
-            color={clear.color}
-            size={clear.size}
-            animate={clear.animate}
-          />
-        );
-      case "Snow":
-        return (
-          <ReactAnimatedWeather
-            icon={snow.icon}
-            color={snow.color}
-            size={snow.size}
-            animate={snow.animate}
-          />
-        );
-      case "Drizzle":
-        return (
-          <ReactAnimatedWeather
-            icon={rain.icon}
-            color={rain.color}
-            size={rain.size}
-            animate={rain.animate}
-          />
-        );
-      case "Thunderstorm":
-        return (
-          <ReactAnimatedWeather
-            icon={thunder.icon}
-            color={thunder.color}
-            size={thunder.size}
-            animate={thunder.animate}
-          />
-        );
-      case "Rain":
-        return (
-          <ReactAnimatedWeather
-            icon={rain.icon}
-            color={rain.color}
-            size={rain.size}
-            animate={rain.animate}
-          />
-        );
-      default:
-        return (
-          <ReactAnimatedWeather
-            icon={clear.icon}
-            color={clear.color}
-            size={clear.size}
-            animate={clear.animate}
-          />
-        );
-    }
+    return <WeatherIcon data={data} />;
   };
 
   return (
@@ -239,6 +145,7 @@ const WeatherFetch = () => {
                 zipCode={zipCode}
                 country={country}
                 unixToTime={unixToTime}
+               
               />
             )}
           </div>
