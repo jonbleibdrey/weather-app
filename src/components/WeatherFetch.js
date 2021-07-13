@@ -25,7 +25,6 @@ const WeatherFetch = () => {
   const [map, setMap] = useState(null);
   require("dotenv").config();
 
-  
   useEffect(() => {
     //get location
     showPosition();
@@ -40,7 +39,7 @@ const WeatherFetch = () => {
       setPopUp("");
     }, 7000);
   }, []);
-  
+
   //show position error function
   function errorCallback(error) {
     throw Error("Our server is down!");
@@ -52,10 +51,10 @@ const WeatherFetch = () => {
     const key = process.env.REACT_APP_LOC_API_KEY;
     setLat(lat);
     setLong(long);
-    
+
     axios
-    .get(
-      `https://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
+      .get(
+        `https://api.positionstack.com/v1/reverse?access_key=${key}&query=${lat},${long}`
       )
       .then((res) => {
         setStatess(res.data.data[0].region);
@@ -64,32 +63,35 @@ const WeatherFetch = () => {
         setCountry(res.data.data[0].country);
         setMap(res.data.data[0].map_url);
       })
-      
-      .catch((error) => console.log(`Error message: ${error.message} `));
-    }
 
-    useEffect(() => {
-      //get weather once you have location info
-      lat && long && getWeather();
-  
-      function getWeather() {
-        const apiKey = process.env.REACT_APP_API_KEY;
-        axios
-          .get(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
-          )
-          .then((res) => setWeather(res.data), setIsLoading(false))
-  
-          .catch((error) => console.log("we in error world", error));
-      }
-    }, [lat, long]);
-    
-    function farConverter(temp) {
-      const celsius = temp - 273;
-      const fahrenheit = Math.floor(celsius * (9 / 5) + 32);
-      return fahrenheit;
+      .catch((error) => console.log(`Error message: ${error.message} `));
+  }
+
+  useEffect(() => {
+    //get weather once you have location info
+    lat && long && getWeather();
+
+    function getWeather() {
+      const apiKey = process.env.REACT_APP_API_KEY;
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${apiKey}`
+        )
+        .then((res) => setWeather(res.data), setIsLoading(false))
+
+        .catch((error) => console.log("we in error world", error));
     }
-    function celConverter(temp) {
+  }, [lat, long]);
+
+  //Converter section
+
+  function farConverter(temp) {
+    const celsius = temp - 273;
+    const fahrenheit = Math.floor(celsius * (9 / 5) + 32);
+    return fahrenheit;
+  }
+
+  function celConverter(temp) {
     const celsius = temp - 273;
     return Math.floor(celsius);
   }
@@ -117,8 +119,9 @@ const WeatherFetch = () => {
       return finalTime + ampm;
     }
   }
- 
+  // End of conversions
 
+  // Weather Icon
   const weatherIcon = (data) => {
     return <WeatherIcon data={data} />;
   };
@@ -145,7 +148,6 @@ const WeatherFetch = () => {
                 zipCode={zipCode}
                 country={country}
                 unixToTime={unixToTime}
-               
               />
             )}
           </div>

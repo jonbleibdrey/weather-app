@@ -10,6 +10,8 @@ const LocalWeatherList = ({
   weatherIcon,
   map,
 }) => {
+
+  
   return (
     <div
       className="contentList"
