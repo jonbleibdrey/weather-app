@@ -1,14 +1,4 @@
-.about-container {
-  display: grid;
-  justify-content: center;
-  position: relative;
-}
-
-.aboutH1 {
-  margin-left: 1vw;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  font-size: 3vw;
-  transform: translate(-50%, -50%);
+.about-header{
+margin-top: 3%;
+margin-left: 25%;
 }

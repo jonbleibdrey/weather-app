@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import axios from "axios";
-
+import "../css/about.css"
 require("dotenv").config();
 
 const About = ({ weatherIcon, popUp }) => {
@@ -33,12 +33,10 @@ const About = ({ weatherIcon, popUp }) => {
     setSearchResult("");
   };
 
-  console.log("search result: ",searchResult)
-
   return (
     <div className="about-container">
       <Logo showSearchBar={showSearchBar} clear={clear} />
-      <div style={{ marginTop: "3%", marginLeft: "25%" }}>
+      <div className="about-header" >
         <h2>
           Welcome to LOOK-UP™ a site for weather
           <hr style={{ width: "52%", borderTop: "5px solid red" }} />
