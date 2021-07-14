@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import axios from "axios";
-import "../css/about.css"
+import "../css/about.css";
 require("dotenv").config();
 
 const About = ({ weatherIcon, popUp }) => {
@@ -11,7 +11,7 @@ const About = ({ weatherIcon, popUp }) => {
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
 
-  // search function in about section
+  // search function w/fetch in about section
   function handleSubmit(evt) {
     const apiKey = process.env.REACT_APP_API_KEY;
     evt.preventDefault();
@@ -33,11 +33,12 @@ const About = ({ weatherIcon, popUp }) => {
     showSearchBar();
     setSearchResult("");
   };
+  //End of search function
 
   return (
     <div className="about-container">
       <Logo showSearchBar={showSearchBar} clear={clear} />
-      <div className="about-header" >
+      <div className="about-header">
         <h2>
           Welcome to LOOK-UP™ a site for weather
           <hr className="about-hr" />
@@ -57,13 +58,9 @@ const About = ({ weatherIcon, popUp }) => {
         </p>
       </div>
       {popUp ? (
-        <div className="pop-up">
-          {popUp}
-        </div>
+        <div className="pop-up">{popUp}</div>
       ) : (
-        <div>
-        {/* {empty} */}
-        </div>
+        <div>{/* {empty} */}</div>
       )}
 
       <div className="about-searchBar">
