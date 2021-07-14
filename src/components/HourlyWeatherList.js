@@ -13,6 +13,7 @@ const HourlyWeatherList = ({
   const showWeather = () => {
     setCollapse(!collapse);
   };
+  
   return (
     <div
       style={{
