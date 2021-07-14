@@ -1,4 +1,25 @@
-.about-header{
-margin-top: 3%;
-margin-left: 25%;
+.about-header {
+  margin-top: 3%;
+  margin-left: 25%;
+}
+
+.about-hr {
+  width: 52%;
+  border-top: 5px solid red;
+}
+
+.pop-up {
+  margin-top: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: -2px 3px 20px -7px black;
+  font-size: 30px;
+  margin-left: 2px;
+  padding: 10px;
+  background: rgba(238, 209, 185, 0.4);
+  width: 14vw;
+}
+
+.about-searchBar {
+  margin-left: 25%;
 }

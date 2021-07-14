@@ -11,6 +11,7 @@ const About = ({ weatherIcon, popUp }) => {
   const [searchResult, setSearchResult] = useState([]);
   const [err, setErr] = useState(false);
 
+  // search function in about section
   function handleSubmit(evt) {
     const apiKey = process.env.REACT_APP_API_KEY;
     evt.preventDefault();
@@ -39,7 +40,7 @@ const About = ({ weatherIcon, popUp }) => {
       <div className="about-header" >
         <h2>
           Welcome to LOOK-UP™ a site for weather
-          <hr style={{ width: "52%", borderTop: "5px solid red" }} />
+          <hr className="about-hr" />
         </h2>
         <br />
         <h5>
@@ -56,26 +57,16 @@ const About = ({ weatherIcon, popUp }) => {
         </p>
       </div>
       {popUp ? (
-        <div
-          style={{
-            marginTop: "50px",
-            border: "none",
-            borderRadius: "10px",
-            boxShadow: "-2px 3px 20px -7px black",
-            fontSize: "30px",
-            marginLeft: "2px",
-            padding: "10px",
-            background: "rgba(238, 209, 185, 0.4)",
-            width: "14vw",
-          }}
-        >
+        <div className="pop-up">
           {popUp}
         </div>
       ) : (
-        <div></div>
+        <div>
+        {/* {empty} */}
+        </div>
       )}
 
-      <div style={{ marginLeft: "25%" }}>
+      <div className="about-searchBar">
         <SearchBar
           toggleSearch={toggleSearch}
           weatherIcon={weatherIcon}
