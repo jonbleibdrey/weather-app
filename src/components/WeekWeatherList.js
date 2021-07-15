@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { v4 as mixId } from "uuid";
+import "../css/WeekWeather.css";
 
 const WeekWeatherList = ({
   weather,
@@ -15,17 +16,7 @@ const WeekWeatherList = ({
   };
 
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        padding: "20px",
-        borderRadius: "20px",
-        marginTop: "13px",
-        boxShadow: "-2px 3px 20px -7px black",
-        fontSize: "16px",
-        marginLeft: "5px",
-      }}
-    >
+    <div className="week-container">
       <h1>Weekly Weather:</h1>
       {collapse ? (
         <div>
@@ -66,14 +57,9 @@ const WeekWeatherList = ({
           ))}
         </div>
       )}
-      <button onClick={showWeather} style={{
-          Padding: "9px",
-          Color: "blue",
-          FontSize: "17px",
-          borderRadius: "20px",
-          border:'none',
-          boxShadow:"-5px 4px 20px -8px black"
-        }}>More days & info</button>
+      <button className="week-button" onClick={showWeather}>
+        More days & info
+      </button>
     </div>
   );
 };

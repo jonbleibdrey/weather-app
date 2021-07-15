@@ -1,5 +1,6 @@
 import React from "react";
 import SearchResult from "./SearchResult";
+import "../css/SearchBar.css";
 
 const SearchBar = ({
   weatherIcon,
@@ -14,58 +15,19 @@ const SearchBar = ({
   return (
     <>
       {toggleSearch ? (
-        <div
-          style={{
-            backgroundColor: "#CEE0DC",
-            padding: "10px",
-            marginTop: "20px",
-            borderRadius: "10px",
-            boxShadow: "-4px 4px 10px -6px black",
-            width: "55vw",
-          }}
-        >
-          <button
-            style={{
-              border: "none",
-              borderRadius: "10px",
-              boxShadow: "-4px 4px 10px -6px black",
-              backgroundColor: "pink",
-              color: "white",
-            }}
-            onClick={clear}
-          >
+        <div className="searchBar-container">
+          <button className="searchBar-buttonClear" onClick={clear}>
             X
           </button>
           <form onSubmit={handleSubmit}>
             <input
-              style={{
-                marginTop: "13px",
-                border: "none",
-                borderRadius: "10px",
-                boxShadow: "-2px 3px 20px -7px black",
-                fontSize: "40px",
-                marginLeft: "50px",
-              }}
+              className="searchBar-input"
               type="text"
               value={search}
               placeholder="State please!"
               onChange={(e) => setSearch(e.target.value.toUpperCase())}
             />
-            <button
-              style={{
-                display: "block",
-                marginTop: "10px",
-                marginBottom: "25px",
-                marginLeft: "50px",
-                padding: "20px",
-                backgroundColor: "white",
-                color: "black",
-                borderRadius: "20px 5px",
-                boxShadow: "-4px 4px 15px -6px black",
-                border: "none",
-              }}
-              type="submit"
-            >
+            <button className="searchBar-button" type="submit">
               Get Weather
             </button>
             <strong>
@@ -74,7 +36,6 @@ const SearchBar = ({
             </strong>
           </form>
           {err === true ? "Put in a state" : " "}
-
           {searchResult.length === 0 ? (
             <div> </div>
           ) : (

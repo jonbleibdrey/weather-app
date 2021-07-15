@@ -1,9 +1,9 @@
-import WeatherFetch from "../components/WeatherFetch";
+import Home from "./Home";
 
 function App() {
   return (
     <div className="App">
-      <WeatherFetch />
+      <Home />
     </div>
   );
 }

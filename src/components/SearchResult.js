@@ -1,22 +1,9 @@
 import React from "react";
+import "../css/SearchResult.css";
 
 const SearchResult = ({ searchResult, weatherIcon }) => {
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        marginTop: "15px",
-        marginLeft: "45px",
-        marginBottom: "20px",
-        display: "block",
-        padding: "20px",
-        color: "black",
-        borderRadius: "20px ",
-        width:'50vw',
-        boxShadow: "-4px 4px 15px -6px black",
-        border: "none",
-      }}
-    >
+    <div className="searchResult-container">
       <h1>Your search results for {searchResult.name}</h1>
       <ul>
         <li>Current tempature is: {Math.round(searchResult.main.temp)}°</li>

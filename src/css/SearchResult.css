@@ -1,0 +1,13 @@
+.searchResult-container {
+  background-color: white;
+  margin-top: 15px;
+  margin-left: 45px;
+  margin-bottom: 20px;
+  display: block;
+  padding: 20px;
+  color: black;
+  border-radius: 20px;
+  width: 50vw;
+  box-shadow: -4px 4px 15px -6px black;
+  border: none;
+}

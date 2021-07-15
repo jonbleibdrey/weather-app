@@ -1,4 +1,4 @@
-.hourly-container {
+.week-container {
   background-color: white;
   padding: 20px;
   border-radius: 20px;
@@ -10,7 +10,8 @@
   max-height: 100vw;
 }
 
-.hourly-button {
+.week-button {
+  margin-top: 15px;
   padding: 9px;
   color: black;
   font-size: 17px;

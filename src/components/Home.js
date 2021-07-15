@@ -10,9 +10,9 @@ import WeekWeatherList from "./WeekWeatherList";
 import Footer from "./Footer";
 import CopyRight from "./CopyRight";
 import axios from "axios";
-import "../css/weatherFetch.css";
+import "../css/Home.css";
 
-const WeatherFetch = () => {
+const Home = () => {
   const [weather, setWeather] = useState(null);
   const [statess, setStatess] = useState();
   const [country, setCountry] = useState();
@@ -196,4 +196,4 @@ const WeatherFetch = () => {
   );
 };
 
-export default WeatherFetch;
+export default Home;

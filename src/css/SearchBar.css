@@ -1,0 +1,38 @@
+.searchBar-container {
+  background-color: #cee0dc;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: -4px 4px 10px -6px black;
+  width: 55vw;
+}
+
+.searchBar-buttonClear {
+  border: none;
+  border-radius: 10px;
+  box-shadow: -4px 4px 10px -6px black;
+  background-color: pink;
+  color: white;
+}
+
+.searchBar-input {
+  margin-top: 13px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: -2px 3px 20px -7px black;
+  font-size: 40px;
+  margin-left: 50px;
+}
+
+.searchBar-button {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  margin-left: 50px;
+  padding: 20px;
+  background-color: white;
+  color: black;
+  border-radius: 20px 5px;
+  box-shadow: -4px 4px 15px -6px black;
+  border: none;
+}
