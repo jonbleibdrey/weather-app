@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { v4 as mixId } from "uuid";
+import "../css/HourlyWeather.css";
 
 const HourlyWeatherList = ({
   weather,
@@ -13,19 +14,9 @@ const HourlyWeatherList = ({
   const showWeather = () => {
     setCollapse(!collapse);
   };
-  
+
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        padding: "20px",
-        borderRadius: "20px",
-        marginTop: "13px",
-        boxShadow: "-2px 3px 20px -7px black",
-        fontSize: "16px",
-        marginLeft: "5px",
-      }}
-    >
+    <div className="hourly-container">
       <h1>Hourly Weather:</h1>
       {collapse ? (
         <div>
@@ -68,19 +59,7 @@ const HourlyWeatherList = ({
           ))}
         </div>
       )}
-      <button
-        onClick={showWeather}
-        style={{
-          Margin: "20px",
-          Padding: "2px 4px",
-          Color: "blue",
-          FontSize: "2.4px",
-          borderRadius: "20px",
-          border:'none',
-          boxShadow:"-5px 4px 20px -8px black"
-        }}
-      >
-        {" "}
+      <button onClick={showWeather} className="hourly-button">
         More time & info
       </button>
     </div>

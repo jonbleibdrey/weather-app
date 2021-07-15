@@ -1,0 +1,18 @@
+.hourly-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 13px;
+  box-shadow: -2px 3px 20px -7px black;
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.hourly-button {
+  padding: 9px;
+  color: black;
+  font-size: 17px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: -5px 4px 20px -8px black;
+}

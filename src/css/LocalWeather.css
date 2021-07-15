@@ -1,0 +1,15 @@
+.local-container{
+    background-color: white;
+    padding: 20px;
+    border-Radius: 20px;
+    margin-top: 13px;
+    box-shadow: -2px 3px 20px -7px black;
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.local-aTag{
+    color: black;
+    border: none;
+    text-decoration: underline
+}

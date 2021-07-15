@@ -67,10 +67,9 @@ const WeekWeatherList = ({
         </div>
       )}
       <button onClick={showWeather} style={{
-          Margin: "20px",
-          Padding: "2px",
+          Padding: "9px",
           Color: "blue",
-          FontSize: "2.4px",
+          FontSize: "17px",
           borderRadius: "20px",
           border:'none',
           boxShadow:"-5px 4px 20px -8px black"

@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/CurrentWeatherList.css";
+import "../css/LocalWeather.css";
 
 const LocalWeatherList = ({
   weather,
@@ -10,30 +10,12 @@ const LocalWeatherList = ({
   weatherIcon,
   map,
 }) => {
-
-  
   return (
-    <div
-      className="contentList"
-      style={{
-        backgroundColor: "white",
-        padding: "20px",
-        borderRadius: "20px",
-        marginTop: "13px",
-        boxShadow: "-2px 3px 20px -7px black",
-        fontSize: "20px",
-        marginLeft: "5px",
-      }}
-    >
+    <div className="local-container">
       <h1>Local Weather:</h1>
       <ul>
         <li>
-          <a
-            href={map}
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: "black", border: "none", textDecoration: "none" }}
-          >
+          <a className="local-aTag" href={map} target="_blank" rel="noreferrer">
             Map link here
           </a>
         </li>
